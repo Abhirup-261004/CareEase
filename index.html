@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CareEase — Smart Care, On Time. Every Time.</title>
+  <meta name="description" content="CareEase helps families and caregivers manage medicine reminders, appointments, and follow‑ups with a calm, accessible interface." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ====== Topbar ====== -->
+  <header class="topbar">
+    <div class="container row">
+      <a class="brand" href="#" aria-label="CareEase home">
+        <span class="brand-badge" aria-hidden>CE</span>
+        <span>CareEase</span>
+      </a>
+      <nav class="primary" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="contact.html" class="btn btn-ghost">Contact</a>
+        <button id="themeToggle" class="btn btn-outline" aria-pressed="false" aria-label="Toggle theme">🌓 Theme</button>
+        <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
+      </nav>
+      <button class="hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobnav">☰</button>
+    </div>
+    <div id="mobnav" hidden class="container" style="padding-top:0; padding-bottom:16px">
+      <div class="card mobmenu">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== Hero ====== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">NEW • Beta preview</span>
+        <h1 class="display">Smart care, on time.<br/>Every time.</h1>
+        <p class="lead">CareEase helps you schedule medicine & appointment reminders, catch missed alerts, and keep loved ones in the loop — all with a friendly interface designed for seniors.</p>
+        <div class="cta-row" id="get-started">
+          <a class="btn btn-primary" href="#features">Explore features</a>
+          <a class="btn btn-outline" href="https://github.com/Abhirup-261004" target="_blank" rel="noopener">Get Started</a>
+        </div>
+        <div class="hero-stats" role="list" aria-label="Highlights">
+          <div class="stat" role="listitem"><b>30s</b><br><span class="muted">Persistent alarm loop</span></div>
+          <div class="stat" role="listitem"><b>Missed → Notify</b><br><span class="muted">One‑tap re‑alerts</span></div>
+          <div class="stat" role="listitem"><b>Accessible UI</b><br><span class="muted">Large text & contrast</span></div>
+        </div>
+      </div>
+
+      <aside class="mock" aria-label="Product preview">
+        <div class="pill" aria-hidden></div>
+        <div class="screen">
+          <div class="bar">
+            <span class="app-title">CareEase</span>
+            <span class="chip">⏰ Reminders</span>
+          </div>
+          <div class="app-body">
+            <div class="app-card"><span class="dot"></span>
+              <div>
+                <b>Metformin 500mg</b>
+                <div class="muted">Everyday • 8:00 AM</div>
+              </div>
+            </div>
+            <div class="app-card"><span class="dot"></span>
+              <div>
+                <b>Dr. Rao — Cardiology</b>
+                <div class="muted">Fri, 11:30 AM • Clinic</div>
+              </div>
+            </div>
+            <div class="app-card dashed">
+              <span class="dot alt"></span>
+              <div>
+                <b>Missed: Blood Pressure</b>
+                <div class="muted">Tap to re‑notify</div>
+              </div>
+            </div>
+          </div>
+          <div class="app-footer">
+            <span class="chip">+ Add reminder</span>
+            <span class="chip">Missed</span>
+            <span class="chip">Contacts</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====== Features ====== -->
+  <section id="features" class="section">
+    <div class="container">
+      <h2>Core features</h2>
+      <p class="muted">Everything you need to keep care on track.</p>
+      <div class="features">
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M12 8v5l4 2"/><circle cx="12" cy="12" r="9"/></svg>
+          <h3>Smart Reminders</h3>
+          <p class="muted">Schedule medicines, vitals, and appointments with a persistent and gentle alarm.</p>
+        </article>
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5-6 5 6"/></svg>
+          <h3>Missed → Re‑Notify</h3>
+          <p class="muted">If something is missed, it’s logged — re‑trigger alerts with a tap.</p>
+        </article>
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M3 5h18"/><path d="M7 5v14"/><path d="M17 5v14"/><path d="M3 19h18"/></svg>
+          <h3>Calm, Accessible UI</h3>
+          <p class="muted">Large touch targets, clear contrast, and an interface seniors can trust.</p>
+        </article>
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
+          <h3>Care Circles</h3>
+          <p class="muted">Share key alerts with family or caregivers to keep everyone aligned.</p>
+        </article>
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 8h10"/><path d="M7 12h6"/></svg>
+          <h3>Privacy‑first</h3>
+          <p class="muted">Local‑first by default. Your data stays on your device unless you choose to sync.</p>
+        </article>
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M12 20v-6"/><path d="M6 20V10"/><path d="M18 20V4"/></svg>
+          <h3>Insights</h3>
+          <p class="muted">Simple streaks and compliance trends to help improve routines.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== How it works ====== -->
+  <section id="how" class="section">
+    <div class="container how-grid">
+      <div>
+        <h2>How it works</h2>
+        <p class="muted">Three simple steps to more reliable care.</p>
+        <div class="steps">
+          <div class="step"><span class="badge">1</span>
+            <div><b>Create a routine</b><br><span class="muted">Add medicines, vitals, or appointments with times and repeat rules.</span></div>
+          </div>
+          <div class="step"><span class="badge">2</span>
+            <div><b>Get gentle alerts</b><br><span class="muted">We nudge you with a persistent yet calm notification loop.</span></div>
+          </div>
+          <div class="step"><span class="badge">3</span>
+            <div><b>Review missed items</b><br><span class="muted">Anything missed is logged for quick re‑notify and reschedule.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">What’s inside the beta?</h3>
+        <ul class="muted list">
+          <li>Reminders & appointment scheduler</li>
+          <li>Missed notifications log + re‑notify</li>
+          <li>Offline‑friendly (local‑first)</li>
+          <li>Keyboard & screen‑reader tested basics</li>
+        </ul>
+        <div class="btns">
+          <a class="btn btn-primary" href="#get-started">Try the demo</a>
+          <button class="btn btn-outline" id="openVideo">▶ Watch 50s overview</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Testimonials ====== -->
+  <section class="section" aria-labelledby="testiTitle">
+    <div class="container">
+      <h2 id="testiTitle">Trusted by families</h2>
+      <p class="muted">Early testers share their experience.</p>
+      <div class="quotes">
+        <blockquote>
+          <p>“My mom loves the big, clear buttons. No more missed BP checks.”</p>
+          <div><span class="avatar">AN</span> <b>Arjun N.</b> · Bengaluru</div>
+        </blockquote>
+        <blockquote>
+          <p>“We finally have one place to track dad’s meds and appointments.”</p>
+          <div><span class="avatar">SR</span> <b>Shreya R.</b> · Pune</div>
+        </blockquote>
+        <blockquote>
+          <p>“The re‑notify feature saved us during a hectic week.”</p>
+          <div><span class="avatar">VK</span> <b>Vikram K.</b> · Kolkata</div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FAQ ====== -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Is my data private?</summary>
+          <div class="muted">Yes. The beta stores data locally in your browser. Cloud sync will be opt‑in later.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Does it work offline?</summary>
+          <div class="muted">Core features continue to work offline. Alerts fire when your device is awake.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I share reminders with family?</summary>
+          <div class="muted">Care Circles (invite a caregiver/family member) is planned for the next milestone.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What devices are supported?</summary>
+          <div class="muted">Modern browsers on Android, iOS, Windows, and macOS. Best on mobile.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Contact & CTA ====== -->
+  <section id="contact" class="section">
+    <div class="container cta">
+      <div>
+        <h3 class="cta-title">Start improving your care routine today</h3>
+        <div class="muted">Join the beta and help shape what comes next.</div>
+      </div>
+      <form id="betaForm" class="card beta">
+        <label>
+          <span class="label">Email</span>
+          <input type="email" required name="email" placeholder="you@example.com" />
+        </label>
+        <button class="btn btn-primary" type="submit">Request invite</button>
+        <div id="betaStatus" class="muted" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer>
+    <div class="container foot-grid">
+      <div>&copy; <b>CareEase</b> — Built by Tech Titans</div>
+      <div class="foot-links">
+        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" id="scrollTop">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+
+</body>
+</html>

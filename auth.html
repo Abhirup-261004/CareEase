@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CareEase — Sign in / Sign up</title>
+  <link rel="stylesheet" href="auth.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg"></div>
+
+  <header class="sitebar">
+    <a href="index.html" class="brand">
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2m1 14h-2v-2H9v-2h2V8h2v4h2v2h-2z"/></svg>
+      <span>CareEase</span>
+    </a>
+    <a class="link" href="index.html">← Back to Home</a>
+  </header>
+
+  <main class="container">
+    <section class="card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <h1 id="authTitle">Welcome to CareEase</h1>
+      <p class="sub">Sign in to continue, or create a new account.</p>
+
+      <div class="tabs" role="tablist" aria-label="Authentication tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-tab="signin">Sign in</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="signup">Sign up</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="forgot">Forgot password</button>
+      </div>
+
+      <!-- Sign in -->
+      <form class="pane" data-pane="signin" autocomplete="on">
+        <label>
+          <span class="label">Email</span>
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+        <label>
+          <span class="label">Password</span>
+          <input type="password" name="password" placeholder="••••••••" minlength="6" required />
+        </label>
+        <button class="btn btn-primary" type="submit">Sign in</button>
+      </form>
+
+      <!-- Sign up -->
+      <form class="pane" data-pane="signup" hidden autocomplete="on">
+        <label>
+          <span class="label">Full name</span>
+          <input type="text" name="name" placeholder="Your name" required />
+        </label>
+        <label>
+          <span class="label">Email</span>
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+        <label>
+          <span class="label">Password</span>
+          <input type="password" name="password" placeholder="Create a password" minlength="6" required />
+        </label>
+        <button class="btn btn-primary" type="submit">Create account</button>
+      </form>
+
+      <!-- Forgot password -->
+      <form class="pane" data-pane="forgot" hidden autocomplete="on">
+        <label>
+          <span class="label">Email</span>
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+        <button class="btn btn-primary" type="submit">Send reset link</button>
+      </form>
+
+      <p class="footnote">
+        By continuing you agree to the <a href="#" aria-label="Terms (placeholder)">Terms</a> and
+        <a href="#" aria-label="Privacy Policy (placeholder)">Privacy Policy</a>.
+      </p>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="auth.js" defer></script>
+</body>
+</html>
