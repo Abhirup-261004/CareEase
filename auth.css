@@ -37,10 +37,26 @@ body{
   background:linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0));
   backdrop-filter: blur(6px);
 }
-.brand{display:flex; align-items:center; gap:10px; color:var(--text); text-decoration:none; font-weight:700}
-.brand svg{color:var(--accent)}
-.link{color:var(--muted); text-decoration:none; border:1px solid rgba(255,255,255,0.16); padding:8px 12px; border-radius:999px}
-.link:hover{color:var(--text); border-color:rgba(255,255,255,0.28)}
+.brand{
+  display:flex; 
+  align-items:center; 
+  gap:10px; color:var(--text); 
+  text-decoration:none; 
+  font-weight:700
+}
+.brand svg{
+  color:var(--accent)
+}
+.link{
+  color:var(--muted); 
+  text-decoration:none; 
+  border:1px solid rgba(255,255,255,0.16); 
+  padding:8px 12px; border-radius:999px
+}
+.link:hover{
+  color:var(--text); 
+  border-color:rgba(255,255,255,0.28)
+}
 
 /* ===== Layout ===== */
 .container{
@@ -58,28 +74,69 @@ body{
   backdrop-filter: blur(10px) saturate(1.1);
 }
 
-h1{margin:0 0 6px; font-size:clamp(22px, 2.3vw, 28px)}
-.sub{margin:0 0 16px; color:var(--muted)}
+h1{
+  margin:0 0 6px; 
+  font-size:clamp(22px, 2.3vw, 28px)
+}
+.sub{
+  margin:0 0 16px; 
+  color:var(--muted)
+}
 
 /* ===== Tabs ===== */
-.tabs{display:flex; gap:8px; margin:8px 0 16px; flex-wrap:wrap}
-.tab{
-  padding:10px 14px; border-radius:999px; cursor:pointer; border:1px solid rgba(255,255,255,0.14);
-  background:var(--surface); color:var(--muted); font-weight:700; transition: .2s ease;
+.tabs{display:flex; 
+  gap:8px; 
+  margin:8px 0 16px; 
+  flex-wrap:wrap
 }
-.tab.active{ color:#06273b; background:linear-gradient(135deg,var(--primaryA),var(--primaryB)); border-color:transparent; transform: translateY(-1px); }
+.tab{
+  padding:10px 14px; 
+  border-radius:999px; 
+  cursor:pointer; 
+  border:1px solid rgba(255,255,255,0.14);
+  background:var(--surface); 
+  color:var(--muted); 
+  font-weight:700; 
+  transition: .2s ease;
+}
+.tab.active{ 
+  color:#06273b; 
+  background:linear-gradient(135deg,var(--primaryA),var(--primaryB)); 
+  border-color:transparent; 
+  transform: translateY(-1px); 
+}
 
 /* ===== Forms ===== */
-.pane{ display:grid; gap:12px; }
-.label{ font-size:.925rem; color:var(--muted) }
-input{
-  width:100%; padding:12px 13px; border-radius:12px; border:1px solid rgba(255,255,255,0.16);
-  background: rgba(5,15,22,0.65); color:var(--text); outline:none; transition: border-color .2s ease, box-shadow .2s ease;
+.pane{ 
+  display:grid; 
+  gap:12px; 
 }
-input:focus{ border-color: var(--accent); box-shadow: 0 0 0 3px rgba(34,211,238,0.20) }
+.label{ 
+  font-size:.925rem; 
+  color:var(--muted) 
+}
+input{
+  width:100%; 
+  padding:12px 13px; 
+  border-radius:12px; 
+  border:1px solid rgba(255,255,255,0.16);
+  background: rgba(5,15,22,0.65); 
+  color:var(--text); 
+  outline:none; 
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+input:focus{ 
+  border-color: var(--accent); 
+  box-shadow: 0 0 0 3px rgba(34,211,238,0.20) 
+}
 
 .btn{
-  appearance:none; border:none; border-radius:12px; padding:12px 16px; font-weight:700; cursor:pointer;
+  appearance:none; 
+  border:none; 
+  border-radius:12px; 
+  padding:12px 16px; 
+  font-weight:700; 
+  cursor:pointer;
 }
 .btn-primary{
   background: linear-gradient(135deg, var(--primaryA), var(--primaryB));
@@ -88,17 +145,33 @@ input:focus{ border-color: var(--accent); box-shadow: 0 0 0 3px rgba(34,211,238,
 .btn-primary:disabled{opacity:.6; cursor:default}
 
 /* ===== Extras ===== */
-.footnote{ margin:14px 2px 0; color:var(--muted); font-size:.92rem }
-.footnote a{ color:var(--text) }
+.footnote{ margin:14px 2px 0; 
+  color:var(--muted); 
+  font-size:.92rem }
+.footnote a{ 
+  color:var(--text) 
+}
 
 /* ===== Toast ===== */
 #toast{
-  position: fixed; inset:auto 12px 12px auto; z-index:3;
-  background: rgba(0,0,0,0.8); color:#d9f6ff; padding:10px 12px; border-radius:10px;
-  border:1px solid rgba(255,255,255,0.12); opacity:0; pointer-events:none; transform: translateY(8px);
+  position: fixed; 
+  inset:auto 12px 12px auto; 
+  z-index:3;
+  background: rgba(0,0,0,0.8); 
+  color:#d9f6ff; 
+  padding:10px 12px; 
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.12); 
+  opacity:0; pointer-events:none; 
+  transform: translateY(8px);
   transition: opacity .2s ease, transform .2s ease;
 }
-#toast.show{opacity:1; transform: translateY(0)}
+#toast.show{
+  opacity:1; 
+  transform: translateY(0)
+}
 
 /* Show only the active pane */
-.pane[hidden] { display: none !important; }
+.pane[hidden] { 
+  display: none !important; 
+}
