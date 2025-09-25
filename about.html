@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — CareEase</title>
+  <meta name="description" content="Learn the mission, values, and team behind CareEase — a calm, accessible tool to keep care on track." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ====== Topbar ====== -->
+  <header class="topbar">
+    <div class="container row">
+      <a class="brand" href="index.html" aria-label="CareEase home">
+        <span class="brand-badge" aria-hidden>CE</span>
+        <span>CareEase</span>
+      </a>
+      <nav class="primary" aria-label="Primary">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html" class="btn btn-ghost">Contact</a>
+        <a href="about.html" aria-current="page">About Us</a>
+        <a href="reminders.html" >Reminders</a>
+        <button id="themeToggle" class="btn btn-outline" aria-pressed="false" aria-label="Toggle theme">🌓 Theme</button>
+        <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
+      </nav>
+      <button class="hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobnav">☰</button>
+    </div>
+    <div id="mobnav" hidden class="container" style="padding-top:0; padding-bottom:16px">
+      <div class="card mobmenu">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html" aria-current="page">About Us</a>
+        <a href="reminders.html" >Reminders</a>
+        <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== Hero / Intro ====== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Our Story</span>
+        <h1 class="display">Why we built CareEase</h1>
+        <p class="lead">
+          Care should feel calm, not chaotic. We started CareEase to help families and caregivers
+          stay on top of medicines, vitals, and appointments — with an interface that’s truly friendly for seniors.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="auth.html#signup">Join the beta</a>
+          <a class="btn btn-outline" href="index.html#how">See how it works</a>
+        </div>
+        <div class="hero-stats" role="list" aria-label="Highlights">
+          <div class="stat" role="listitem"><b>Local-first</b><br><span class="muted">Privacy by default</span></div>
+          <div class="stat" role="listitem"><b>Accessible</b><br><span class="muted">Large text & contrast</span></div>
+          <div class="stat" role="listitem"><b>Reliable</b><br><span class="muted">Missed → re-notify</span></div>
+        </div>
+      </div>
+
+      <aside class="mock" aria-label="Product preview">
+        <div class="pill" aria-hidden></div>
+        <div class="screen">
+          <div class="bar">
+            <span class="app-title">CareEase</span>
+            <span class="chip">About</span>
+          </div>
+          <div class="app-body">
+            <div class="app-card"><span class="dot"></span>
+              <div><b>Built for families</b><div class="muted">Simple, shared routines</div></div>
+            </div>
+            <div class="app-card"><span class="dot alt"></span>
+              <div><b>Designed for seniors</b><div class="muted">Clear, calm UI</div></div>
+            </div>
+            <div class="app-card dashed"><span class="dot"></span>
+              <div><b>Privacy-first</b><div class="muted">You control your data</div></div>
+            </div>
+          </div>
+          <div class="app-footer">
+            <span class="chip">Mission</span>
+            <span class="chip">Values</span>
+            <span class="chip">Team</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====== Mission ====== -->
+  <section class="section">
+    <div class="container">
+      <h2>Mission</h2>
+      <p class="muted">
+        Empower every household to manage care with confidence through gentle reminders,
+        clear design, and privacy-respecting technology.
+      </p>
+      <div class="card" style="margin-top:12px">
+        <ul class="list muted">
+          <li>Make care tasks <b>easy to remember</b> and <b>hard to miss</b>.</li>
+          <li>Keep families aligned with <b>care circles</b> and respectful sharing.</li>
+          <li>Ensure accessibility from day one: <b>large touch targets</b>, <b>assistive tech tested</b>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== What we do ====== -->
+  <section class="section">
+    <div class="container">
+      <h2>What we do</h2>
+      <p class="muted">CareEase blends thoughtful design with reliable reminders.</p>
+      <div class="features" style="margin-top:14px">
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <h3>Gentle, persistent alerts</h3>
+          <p class="muted">A calm loop that reduces anxiety while increasing reliability.</p>
+        </article>
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M20 7h-9"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/></svg>
+          <h3>Care circles</h3>
+          <p class="muted">Invite trusted people to receive key alerts and updates.</p>
+        </article>
+        <article class="card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 8h10"/><path d="M7 12h6"/></svg>
+          <h3>Privacy-first</h3>
+          <p class="muted">Local-first by default. Sync is opt-in and transparent.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Values ====== -->
+  <section class="section">
+    <div class="container">
+      <h2>Our values</h2>
+      <div class="quotes" style="margin-top:12px">
+        <blockquote>
+          <p><b>Respect</b> — People before metrics. We build for real lives and real constraints.</p>
+        </blockquote>
+        <blockquote>
+          <p><b>Clarity</b> — Every screen should be calm, readable, and predictable.</p>
+        </blockquote>
+        <blockquote>
+          <p><b>Trust</b> — Your data is yours. We explain how things work, no dark patterns.</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Team ====== -->
+  <section class="section">
+    <div class="container">
+      <h2>Team</h2>
+      <p class="muted">Built by <b>Tech Titans</b> with input from caregivers and clinicians.</p>
+      <div class="quotes" style="margin-top:12px">
+        <div class="card">
+          <div><span class="avatar">AN</span> <b>Abhirup N.</b></div>
+          <p class="muted" style="margin-top:8px">Product & Engineering — turns complex workflows into simple flows.</p>
+        </div>
+        <div class="card">
+          <div><span class="avatar">TT</span> <b>Tech Titans</b></div>
+          <p class="muted" style="margin-top:8px">Design, research, and QA across accessibility and reliability.</p>
+        </div>
+        <div class="card">
+          <div><span class="avatar">CB</span> <b>Community Beta</b></div>
+          <p class="muted" style="margin-top:8px">Early testers from Bengaluru, Pune, and Kolkata keep us honest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Timeline / How we got here ====== -->
+  <section class="section">
+    <div class="container">
+      <h2>How we got here</h2>
+      <div class="steps" style="margin-top:12px">
+        <div class="step"><span class="badge">1</span>
+          <div><b>Pain points</b><br><span class="muted">Families struggling with missed meds and scattered notes.</span></div>
+        </div>
+        <div class="step"><span class="badge">2</span>
+          <div><b>Prototypes</b><br><span class="muted">Tested large text, high contrast, and tap-friendly layouts.</span></div>
+        </div>
+        <div class="step"><span class="badge">3</span>
+          <div><b>Beta</b><br><span class="muted">Local-first reminders, missed-item re-notify, and insights.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Accessibility & Privacy ====== -->
+  <section class="section">
+    <div class="container">
+      <h2>Accessibility & privacy</h2>
+      <div class="faq" style="margin-top:12px">
+        <div class="faq-item">
+          <b>Accessibility</b>
+          <div class="muted">Clear contrast, keyboard support, and screen-reader tested basics.</div>
+        </div>
+        <div class="faq-item">
+          <b>Privacy</b>
+          <div class="muted">Local-first storage; future sync will be opt-in with transparent controls.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA ====== -->
+  <section class="section">
+    <div class="container cta">
+      <div>
+        <h3 class="cta-title">Help us shape the future of home care</h3>
+        <div class="muted">Join the beta to share feedback and request features.</div>
+      </div>
+      <form id="betaForm" class="card beta">
+        <label>
+          <span class="label">Email</span>
+          <input type="email" required name="email" placeholder="you@example.com" />
+        </label>
+        <button class="btn btn-primary" type="submit">Request invite</button>
+        <div id="betaStatus" class="muted" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer>
+    <div class="container foot-grid">
+      <div>&copy; <b>CareEase</b> — Built by Tech Titans</div>
+      <div class="foot-links">
+        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" id="scrollTop">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

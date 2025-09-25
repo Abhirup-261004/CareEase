@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reminders — CareEase</title>
+  <meta name="description" content="Schedule medicines, vitals, and appointments with a calm, reliable alert loop." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ====== Topbar ====== -->
+  <header class="topbar">
+    <div class="container row">
+      <a class="brand" href="index.html" aria-label="CareEase home">
+        <span class="brand-badge" aria-hidden>CE</span>
+        <span>CareEase</span>
+      </a>
+      <nav class="primary" aria-label="Primary">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html" class="btn btn-ghost">Contact</a>
+        <a href="about.html">About Us</a>
+        <a href="reminders.html" aria-current="page">Reminders</a>
+        <button id="themeToggle" class="btn btn-outline" aria-pressed="false" aria-label="Toggle theme">🌓 Theme</button>
+        <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
+      </nav>
+      <button class="hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobnav">☰</button>
+    </div>
+    <div id="mobnav" hidden class="container" style="padding-top:0; padding-bottom:16px">
+      <div class="card mobmenu">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+        <a href="reminders.html" aria-current="page">Reminders</a>
+        <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== Hero ====== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Care that’s on time</span>
+        <h1 class="display">Reminders</h1>
+        <p class="lead">
+          Create medicine, vitals, and appointment reminders with a gentle persistent alert.
+          Missed items are logged so you can re-notify with one tap.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#create">+ Add reminder</a>
+          <a class="btn btn-outline" href="#missed">View missed</a>
+        </div>
+        <div class="hero-stats" role="list" aria-label="Highlights">
+          <div class="stat" role="listitem"><b>Daily/Weekly</b><br><span class="muted">Simple repeat rules</span></div>
+          <div class="stat" role="listitem"><b>Re-notify</b><br><span class="muted">One-tap catch-up</span></div>
+          <div class="stat" role="listitem"><b>Local-first</b><br><span class="muted">Private by default</span></div>
+        </div>
+      </div>
+
+      <aside class="mock" aria-label="In-app preview">
+        <div class="pill" aria-hidden></div>
+        <div class="screen">
+          <div class="bar">
+            <span class="app-title">CareEase</span>
+            <span class="chip">⏰ Reminders</span>
+          </div>
+          <div class="app-body">
+            <div class="app-card"><span class="dot"></span>
+              <div><b>Metformin 500mg</b><div class="muted">Daily • 08:00</div></div>
+            </div>
+            <div class="app-card"><span class="dot alt"></span>
+              <div><b>BP Check</b><div class="muted">Daily • 20:00</div></div>
+            </div>
+            <div class="app-card dashed"><span class="dot"></span>
+              <div><b>Missed: Walk 15m</b><div class="muted">Tap to re-notify</div></div>
+            </div>
+          </div>
+          <div class="app-footer">
+            <span class="chip">+ Add</span>
+            <span class="chip">Missed</span>
+            <span class="chip">Contacts</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====== Create / Edit form ====== -->
+  <section id="create" class="section">
+    <div class="container">
+      <h2>Add or edit a reminder</h2>
+      <form id="reminderForm" class="form card">
+        <input type="hidden" name="id" />
+        <label>
+          <span class="label">Type</span>
+          <select name="type" required>
+            <option value="medicine">Medicine</option>
+            <option value="vitals">Vitals</option>
+            <option value="appointment">Appointment</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+        <label>
+          <span class="label">Title</span>
+          <input type="text" name="title" placeholder="e.g., Metformin 500mg" required />
+        </label>
+        <label>
+          <span class="label">Time</span>
+          <input type="time" name="time" required />
+        </label>
+        <label>
+          <span class="label">Repeat</span>
+          <select name="repeat" required>
+            <option value="once">Once</option>
+            <option value="daily" selected>Daily</option>
+            <option value="weekly">Weekly</option>
+          </select>
+        </label>
+        <label class="full">
+          <span class="label">Notes (optional)</span>
+          <textarea name="notes" placeholder="Dose, instructions, location…"></textarea>
+        </label>
+        <label class="consent full">
+          <input type="checkbox" name="enabled" checked />
+          <span>Enable this reminder</span>
+        </label>
+        <div class="btns full">
+          <button class="btn btn-primary" type="submit">Save reminder</button>
+          <button class="btn btn-outline" type="reset" id="formReset">Clear</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====== Active reminders ====== -->
+  <section class="section">
+    <div class="container">
+      <h2>Active reminders</h2>
+      <div class="card" style="margin-top:10px">
+        <div class="cta-row" style="justify-content:space-between; flex-wrap:wrap">
+          <div class="muted">These run locally in your browser.</div>
+          <div style="display:flex; gap:8px">
+            <input id="search" placeholder="Search title…" style="padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); color: var(--text);" />
+            <button id="testBell" class="btn btn-outline" type="button">🔔 Test alert</button>
+          </div>
+        </div>
+        <div id="list" class="steps" style="margin-top:12px"></div>
+        <div class="muted" id="emptyState" style="display:none; padding:8px 0">No reminders yet — add one above.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Missed log ====== -->
+  <section id="missed" class="section">
+    <div class="container">
+      <h2>Missed items</h2>
+      <div class="card" style="margin-top:10px">
+        <div id="missedList" class="steps"></div>
+        <div class="muted" id="missedEmpty" style="display:none; padding:8px 0">No missed items — nice!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer>
+    <div class="container foot-grid">
+      <div>&copy; <b>CareEase</b> — Built by Tech Titans</div>
+      <div class="foot-links">
+        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" id="scrollTop">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/reminders.js"></script>
+</body>
+</html>
