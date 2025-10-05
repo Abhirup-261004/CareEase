@@ -501,6 +501,12 @@ footer {
 .toast.show { 
   display:block 
 }
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+  object-fit: contain;
+}
 
 
 @media (max-width: 720px) { 
