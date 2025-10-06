@@ -59,6 +59,7 @@ openVideo?.addEventListener('click', () => {
   wrap.appendChild(card); wrap.appendChild(close); document.body.appendChild(wrap);
 });
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll("nav.primary a");
   const mobLinks = document.querySelectorAll("#mobnav a");
@@ -116,3 +117,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+const taglineEl = document.getElementById('tagline');
+const text = taglineEl.textContent;
+taglineEl.textContent = '';
+let i = 0;
+
+function typeWriter() {
+  if(i < text.length){
+    taglineEl.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 30); // typing speed
+  }
+}
+typeWriter();
+
