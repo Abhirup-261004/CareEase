@@ -59,6 +59,65 @@ openVideo?.addEventListener('click', () => {
   wrap.appendChild(card); wrap.appendChild(close); document.body.appendChild(wrap);
 });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll("nav.primary a");
+  const mobLinks = document.querySelectorAll("#mobnav a");
+  const sections = document.querySelectorAll("section[id]");
+
+  // Highlight link on scroll
+  function setActiveLink() {
+    const scrollPos = window.scrollY + 150; // offset for sticky header
+    let currentSectionId = "";
+
+    sections.forEach(section => {
+      if (scrollPos >= section.offsetTop) {
+        currentSectionId = section.id;
+      }
+    });
+
+    function updateLinks(links) {
+      links.forEach(link => {
+        const href = link.getAttribute("href");
+
+        if (href.endsWith(`#${currentSectionId}`)) {
+          link.classList.add("active");
+        } else if (href.endsWith("index.html") && !currentSectionId && location.pathname.includes("index.html")) {
+          link.classList.add("active");
+        } else if (location.pathname.includes(href) && !href.includes("#")) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+
+    updateLinks(navLinks);
+    updateLinks(mobLinks);
+  }
+
+  window.addEventListener("scroll", setActiveLink);
+  setActiveLink(); // Initial check
+
+  // Smooth scroll offset for sticky header
+  const scrollOffset = 100;
+  const allLinks = [...navLinks, ...mobLinks];
+
+  allLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      const targetId = link.getAttribute("href").split("#")[1];
+      if (targetId && document.getElementById(targetId)) {
+        e.preventDefault();
+        const targetPos = document.getElementById(targetId).offsetTop - scrollOffset;
+        window.scrollTo({
+          top: targetPos,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+});
+
 const taglineEl = document.getElementById('tagline');
 const text = taglineEl.textContent;
 taglineEl.textContent = '';
@@ -72,3 +131,4 @@ function typeWriter() {
   }
 }
 typeWriter();
+
