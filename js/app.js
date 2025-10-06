@@ -58,3 +58,17 @@ openVideo?.addEventListener('click', () => {
 
   wrap.appendChild(card); wrap.appendChild(close); document.body.appendChild(wrap);
 });
+
+const taglineEl = document.getElementById('tagline');
+const text = taglineEl.textContent;
+taglineEl.textContent = '';
+let i = 0;
+
+function typeWriter() {
+  if(i < text.length){
+    taglineEl.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 30); // typing speed
+  }
+}
+typeWriter();
