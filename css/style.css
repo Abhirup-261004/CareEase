@@ -641,3 +641,36 @@ footer {
     grid-template-columns: 1fr 
   } 
 }
+
+/* ====== Back to Top (Anchor Version) ====== */
+#backToTop {
+  position: fixed;
+  bottom: 60px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primaryA), var(--primaryB));
+  color: rgba(255, 255, 255, 0.915);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 30px;
+  box-shadow: 0 6px 20px rgba(37, 117, 252, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#backToTop:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(37, 117, 252, 0.6);
+}
+
+/* Show when active */
+#backToTop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}

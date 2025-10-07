@@ -26,8 +26,27 @@ themeToggle?.addEventListener('click', () => {
 });
 
 // Smooth scroll back to top
-const backTop = document.getElementById('scrollTop');
-backTop?.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+// const backTop = document.getElementById('scrollTop');
+// backTop?.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+// ====== Back to Top (Anchor Version) ======
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add("visible");
+  } else {
+    backToTop.classList.remove("visible");
+  }
+});
+
+backToTop.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
 
 // Beta form (demo)
 const betaForm = document.getElementById('betaForm');
