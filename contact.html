@@ -10,30 +10,39 @@
   <link rel="icon" type="image/png" href="assets/logo.png" />
 </head>
 <body>
-  <!-- Topbar (compact) -->
-  <header class="topbar">
-    <div class="container row">
-      <a class="brand" href="index.html" aria-label="Back to home">
-        <img src="assets/logo.svg" alt="CareEase Logo" class="brand-logo" />
-        <span>CareEase</span>
-      </a>
-      <nav class="primary" aria-label="Primary">
-        <a href="index.html#features">Features</a>
-        <a href="index.html#how">How it works</a>
-        <a href="index.html#faq">FAQ</a>
-        <a class="btn btn-outline" href="index.html">Home</a>
-      </nav>
-      <button class="hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobnav">☰</button>
+  
+  <!-- ====== Topbar ====== -->
+<header class="topbar">
+  <div class="container row">
+    <a class="brand" href="index.html" aria-label="CareEase home">
+      <img src="assets/logo.svg" alt="CareEase Logo" class="brand-logo" />
+      <span>CareEase</span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="contact.html" aria-current="page" class="btn btn-ghost">Contact</a>
+      <a href="about.html">About Us</a>
+      <a href="reminders.html">Reminders</a>
+      <button id="themeToggle" class="btn btn-outline" aria-pressed="false" aria-label="Toggle theme">🌓 Theme</button>
+      <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
+    </nav>
+    <button class="hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobnav">☰</button>
+  </div>
+  <div id="mobnav" hidden class="container" style="padding-top:0; padding-bottom:16px">
+    <div class="card mobmenu">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <a href="about.html">About Us</a>
+      <a href="reminders.html">Reminders</a>
+      <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
     </div>
-    <div id="mobnav" hidden class="container" style="padding-top:0; padding-bottom:16px">
-      <div class="card mobmenu">
-        <a href="index.html#features">Features</a>
-        <a href="index.html#how">How it works</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="index.html">Home</a>
-      </div>
-    </div>
-  </header>
+  </div>
+</header>
+
 
   <main>
     <section class="section">
