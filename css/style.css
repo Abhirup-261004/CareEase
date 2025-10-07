@@ -649,7 +649,8 @@ footer {
   right: 40px;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  background: linear-gradient(135deg, var(--primaryA), var(--primaryB));
+  color: rgba(255, 255, 255, 0.915);
   border-radius: 50%;
   display: flex;
   align-items: center;
