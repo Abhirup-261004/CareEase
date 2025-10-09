@@ -171,6 +171,22 @@ input:focus{
   transform: translateY(0)
 }
 
+.password-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 1.2rem;
+  padding: 0;
+}
 /* Show only the active pane */
 .pane[hidden] { 
   display: none !important; 
