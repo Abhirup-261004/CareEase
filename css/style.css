@@ -621,7 +621,9 @@ blockquote {
   place-items:center; 
   color:#04263b; 
   font-weight:900; 
-  margin-right:10px 
+  margin-right:10px;
+}
+
 /* Testimonials */
 .quotes {
   display: grid;
