@@ -162,6 +162,7 @@ nav.primary a.active-link:hover,
   font-weight: 800;
   background: linear-gradient(90deg, #6ee7b7, #c084fc, #60a5fa); /* mint → purple → cyan */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 10px rgba(110, 231, 183, 0.25),
                0 0 20px rgba(192, 132, 252, 0.25);
@@ -657,6 +658,7 @@ footer {
   transition: all 0.3s ease;
   z-index: 1000;
   opacity: 0;
+  
   pointer-events: none;
 }
 
