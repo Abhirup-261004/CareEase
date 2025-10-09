@@ -248,7 +248,10 @@ list?.addEventListener('click', (e) => {
   if (!r) return;
 
   if (e.target.classList.contains('delete')) {
-    deleteReminder(id); showToast('Deleted');
+    if (window.confirm('Are you sure you want to delete this reminder?')) {
+      deleteReminder(id);
+      showToast('Deleted');
+    }
   } else if (e.target.classList.contains('edit')) {
     // Fill form for editing
     form.elements.id.value = r.id;
