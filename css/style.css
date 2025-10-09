@@ -92,24 +92,20 @@ nav.primary a {
 html {
   scroll-behavior: smooth;
 }
-nav.primary a.active,
-#mobnav a.active {
-  color: var(--primaryA);
-  font-weight: 700;
-  position: relative;
-  transition: color 0.3s;
+
+nav.primary a.active-link,
+#mobnav a.active-link {
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff !important;
+  transition: all 0.25s ease;
 }
 
-nav.primary a.active::after,
-#mobnav a.active::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--primaryA);
-  border-radius: 2px;
+nav.primary a.active-link:hover,
+#mobnav a.active-link:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .btn, button.btn { 
