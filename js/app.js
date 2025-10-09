@@ -264,3 +264,23 @@ const testiObserver = new IntersectionObserver(
 testimonials.forEach(card => testiObserver.observe(card));
 
 featureCards.forEach((card) => observer.observe(card))
+
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll("[data-typewriter]");
+
+  elements.forEach((el) => {
+    const text = el.textContent;
+    el.textContent = "";
+    el.style.width = "0ch";
+
+    let i = 0;
+    const interval = setInterval(() => {
+      el.textContent += text[i];
+      i++;
+      if (i >= text.length) {
+        clearInterval(interval);
+        el.classList.add("finished"); // removes cursor
+      }
+    }, 50); // typing speed
+  });
+});

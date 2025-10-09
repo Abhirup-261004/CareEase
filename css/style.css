@@ -634,8 +634,11 @@ blockquote {
   place-items:center; 
   color:#04263b; 
   font-weight:900; 
+
+
   margin-right:10px;
 }
+
 
 /* Testimonials */
 .quotes {
@@ -881,3 +884,34 @@ select option:checked {
   pointer-events: auto;
 }
 
+/* Gradient & Glow effect for typewriter headings */
+h2[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid var(--primaryA);
+  white-space: nowrap;
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 48px); /* adjust for h2 */
+  background: linear-gradient(90deg, #6ee7b7, #c084fc, #60a5fa); /* mint → purple → cyan */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(110, 231, 183, 0.25), 0 0 20px rgba(192, 132, 252, 0.25);
+  animation: heroGlow 3s ease-in-out infinite alternate, typing 1.5s steps(30, end) forwards;
+}
+
+/* Remove cursor after typing */
+h2[data-typewriter].finished {
+  border-right: none;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes heroGlow {
+  0% { text-shadow: 0 0 10px rgba(110, 231, 183, 0.25), 0 0 20px rgba(192, 132, 252, 0.25); }
+  50% { text-shadow: 0 0 15px rgba(110, 231, 183, 0.5), 0 0 30px rgba(192, 132, 252, 0.5); }
+  100% { text-shadow: 0 0 10px rgba(110, 231, 183, 0.25), 0 0 20px rgba(192, 132, 252, 0.25); }
+}
