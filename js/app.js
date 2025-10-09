@@ -402,4 +402,23 @@ const observer = new IntersectionObserver(
   { threshold: 0.2 },
 )
 
+
+// Testimonials fade-in animation
+const testimonials = document.querySelectorAll('.testi-card');
+
+const testiObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        testiObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+testimonials.forEach(card => testiObserver.observe(card));
+
 featureCards.forEach((card) => observer.observe(card))
+

@@ -477,7 +477,151 @@ nav.primary a.btn.btn-primary,
   gap: 10px;
   margin-top: 14px;
 }
+/* Testimonials Section */
+.testimonials {
+  padding: 4rem 1rem;
+  background-color: #f9f9f9; /* Light mode background */
+  text-align: center;
+  transition: background-color 0.3s;
+}
 
+.testimonials .section-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #111; /* Light mode heading */
+  transition: color 0.3s;
+}
+
+.testimonials .muted {
+  color: #666; /* Light mode muted text */
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.testi-card {
+  background-color: #fff; /* Light mode card background */
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.testi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.testi-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.user-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+  border: 2px solid #007BFF;
+  transition: border-color 0.3s;
+}
+
+.user-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: #222; /* Light mode name */
+  transition: color 0.3s;
+}
+
+.user-loc {
+  font-size: 0.9rem;
+  color: #777; /* Light mode location */
+  margin: 0;
+  transition: color 0.3s;
+}
+
+.testi-text {
+  font-size: 0.95rem;
+  color: #444; /* Light mode testimonial text */
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  transition: color 0.3s;
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  .testimonials {
+    background-color: #1a1a1a;
+  }
+  
+  .testimonials .section-title {
+    color: #f9f9f9;
+  }
+  
+  .testimonials .muted {
+    color: #ccc;
+  }
+
+  .testi-card {
+    background-color: #2c2c2c;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  }
+
+  .testi-card:hover {
+    box-shadow: 0 12px 24px rgba(0,0,0,0.8);
+  }
+
+  .user-img {
+    border-color: #4dabf7; /* Slightly lighter blue in dark mode */
+  }
+
+  .user-name {
+    color: #f0f0f0;
+  }
+
+  .user-loc {
+    color: #aaa;
+  }
+
+  .testi-text {
+    color: #e0e0e0;
+  }
+}
+
+
+
+
+.quotes { 
+  display:grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap:16px; margin-top:12px 
+}
+blockquote { 
+  margin:0; 
+  padding:18px; 
+  background:var(--card); 
+  border-radius:16px; 
+  border:1px solid rgba(255,255,255,0.08) 
+}
+.avatar { 
+  width:36px; 
+  height:36px; 
+  border-radius:999px; 
+  background: linear-gradient(135deg, var(--primaryA), var(--primaryB)); 
+  display:inline-grid; 
+  place-items:center; 
+  color:#04263b; 
+  font-weight:900; 
+  margin-right:10px 
 /* Testimonials */
 .quotes {
   display: grid;
@@ -502,6 +646,7 @@ blockquote {
   color: #04263b;
   font-weight: 900;
   margin-right: 10px;
+
 }
 
 /* FAQ */
