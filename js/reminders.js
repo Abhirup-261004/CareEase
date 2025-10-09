@@ -298,61 +298,83 @@ form?.addEventListener("submit", (e) => {
   showToast('Saved ✔');
 });
 
-$$('#formReset')?.addEventListener('click', ()=> {
-  form.reset(); form.querySelector('[name=id]').value = '';
-});
+list?.addEventListener("click", (e) => {
+  const step = e.target.closest(".step");
+  if (!step) return;
 
-list?.addEventListener('click', (e) => {
-  const step = e.target.closest('.step'); if (!step) return;
   const id = step.dataset.id;
-  const r = state.reminders.find(x => x.id === id);
+  const r = state.reminders.find((x) => x.id === id);
   if (!r) return;
 
-  if (e.target.classList.contains('delete')) {
-    if (window.confirm('Are you sure you want to delete this reminder?')) {
-      deleteReminder(id);
-      showToast('Deleted');
-    }
-  } else if (e.target.classList.contains('edit')) {
-    createdAt: new Date().toISOString(),
-  }
-  if (!payload.title || !payload.time) return
-  upsertReminder(payload)
-  form.reset()
-  showToast("Saved ✔")
-})
-
-$$("#formReset")?.addEventListener("click", () => {
-  form.reset()
-  form.querySelector("[name=id]").value = ""
-})
-
-list?.addEventListener("click", (e) => {
-  const step = e.target.closest(".step")
-  if (!step) return
-  const id = step.dataset.id
-  const r = state.reminders.find((x) => x.id === id)
-  if (!r) return
-
   if (e.target.classList.contains("delete")) {
-    deleteReminder(id)
-    showToast("Deleted")
-  } else if (e.target.classList.contains("edit")) {
-    // Fill form for editing
-    form.elements.id.value = r.id
-    form.elements.type.value = r.type
-    form.elements.title.value = r.title
-    form.elements.time.value = r.time
-    form.elements.repeat.value = r.repeat
-    form.elements.notes.value = r.notes || ""
-    form.elements.enabled.checked = !!r.enabled
-    window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" })
-  } else if (e.target.classList.contains("toggle")) {
-    r.enabled = e.target.checked
-    saveState()
-    render()
+    if (window.confirm("Are you sure you want to delete this reminder?")) {
+      deleteReminder(id);
+      showToast("Deleted");
+    }
+    return;
   }
-})
+
+  if (e.target.classList.contains("edit")) {
+    // Fill form for editing
+    form.elements.id.value = r.id;
+    form.elements.type.value = r.type;
+    form.elements.title.value = r.title;
+    form.elements.time.value = r.time;
+    form.elements.repeat.value = r.repeat;
+    form.elements.notes.value = r.notes || "";
+    form.elements.enabled.checked = !!r.enabled;
+
+    window.scrollTo({
+      top: form.getBoundingClientRect().top + window.scrollY - 80,
+      behavior: "smooth",
+    });
+    return;
+  }
+
+  if (e.target.classList.contains("toggle")) {
+    r.enabled = e.target.checked;
+    saveState();
+    render();
+  }
+});
+
+// Form reset
+$$("#formReset")?.addEventListener("click", () => {
+  form.reset();
+  form.querySelector("[name=id]").value = "";
+});
+
+// Form submit builds payload and saves
+form?.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const fd = new FormData(form);
+  const isEdit = !!fd.get("id");
+
+  const payload = {
+    id: isEdit ? fd.get("id") : crypto.randomUUID(),
+    type: fd.get("type") || "basic",
+    title: (fd.get("title") || "").trim(),
+    time: fd.get("time"),
+    repeat: fd.get("repeat") || "none",
+    notes: fd.get("notes") || "",
+    enabled: form.elements.enabled?.checked ?? true,
+    // set createdAt only when creating new; preserve existing on edit
+    createdAt: isEdit ? (state.reminders.find(r => r.id === fd.get("id"))?.createdAt) : new Date().toISOString(),
+  };
+
+  if (!payload.title || !payload.time) {
+    showToast("Title and time are required");
+    return;
+  }
+
+  upsertReminder(payload);
+  form.reset();
+  form.querySelector("[name=id]").value = "";
+  showToast("Saved ✔");
+  render();
+});
+
 
 $$("#testBell")?.addEventListener("click", () => {
   ring({ id: "test", title: "Test reminder" })
