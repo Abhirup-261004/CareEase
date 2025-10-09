@@ -107,6 +107,28 @@
   })
 
   // Optional: autofocus first field on load
+  document.addEventListener('DOMContentLoaded', ()=>{
+    $('.pane:not([hidden]) input')?.focus();
+  });
+})();
+// Password visibility toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleButtons = document.querySelectorAll('.password-toggle');
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const passwordInput = button.previousElementSibling;
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        button.textContent = '🙈';
+        button.setAttribute('aria-label', 'Hide password');
+      } else {
+        passwordInput.type = 'password';
+        button.textContent = '👁️';
+        button.setAttribute('aria-label', 'Show password');
+      }
+    });
+  });
+});
   document.addEventListener("DOMContentLoaded", () => {
     $(".pane:not([hidden]) input")?.focus()
   })

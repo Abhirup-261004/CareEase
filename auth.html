@@ -11,7 +11,6 @@
   <link rel="icon" type="image/png" href="assets/logo.png" />
 </head>
 <body>
-  <!-- Background -->
   <div class="bg"></div>
 
   <header class="sitebar">
@@ -33,7 +32,6 @@
         <button class="tab" role="tab" aria-selected="false" data-tab="forgot">Forgot password</button>
       </div>
 
-      <!-- Sign in -->
       <form class="pane" data-pane="signin" autocomplete="on">
         <label>
           <span class="label">Email</span>
@@ -41,12 +39,14 @@
         </label>
         <label>
           <span class="label">Password</span>
-          <input type="password" name="password" placeholder="••••••••" minlength="6" required />
+          <div class="password-wrapper">
+            <input type="password" name="password" placeholder="••••••••" minlength="6" required />
+            <button type="button" class="password-toggle" aria-label="Show password">👁️</button>
+          </div>
         </label>
         <button class="btn btn-primary" type="submit">Sign in</button>
       </form>
 
-      <!-- Sign up -->
       <form class="pane" data-pane="signup" hidden autocomplete="on">
         <label>
           <span class="label">Full name</span>
@@ -58,12 +58,14 @@
         </label>
         <label>
           <span class="label">Password</span>
-          <input type="password" name="password" placeholder="Create a password" minlength="6" required />
+          <div class="password-wrapper">
+            <input type="password" name="password" placeholder="Create a password" minlength="6" required />
+            <button type="button" class="password-toggle" aria-label="Show password">👁️</button>
+          </div>
         </label>
         <button class="btn btn-primary" type="submit">Create account</button>
       </form>
 
-      <!-- Forgot password -->
       <form class="pane" data-pane="forgot" hidden autocomplete="on">
         <label>
           <span class="label">Email</span>

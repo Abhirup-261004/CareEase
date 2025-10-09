@@ -290,6 +290,30 @@ form?.addEventListener("submit", (e) => {
     notes: String(fd.get("notes") || ""),
     enabled: fd.get("enabled") ? true : false,
     lastFired: null,
+    createdAt: new Date().toISOString()
+  };
+  if (!payload.title || !payload.time) return;
+  upsertReminder(payload);
+  form.reset();
+  showToast('Saved ✔');
+});
+
+$$('#formReset')?.addEventListener('click', ()=> {
+  form.reset(); form.querySelector('[name=id]').value = '';
+});
+
+list?.addEventListener('click', (e) => {
+  const step = e.target.closest('.step'); if (!step) return;
+  const id = step.dataset.id;
+  const r = state.reminders.find(x => x.id === id);
+  if (!r) return;
+
+  if (e.target.classList.contains('delete')) {
+    if (window.confirm('Are you sure you want to delete this reminder?')) {
+      deleteReminder(id);
+      showToast('Deleted');
+    }
+  } else if (e.target.classList.contains('edit')) {
     createdAt: new Date().toISOString(),
   }
   if (!payload.title || !payload.time) return
