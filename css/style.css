@@ -220,6 +220,8 @@ nav.primary a.btn.btn-primary,
   border-right: 2px solid #06b6d4;
   white-space: pre-wrap; /* allow multiple lines */
   overflow: visible;
+  font-family: 'Recursive', sans-serif;
+  font-weight: 600;
 }
 
 @keyframes typing {
