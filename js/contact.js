@@ -33,3 +33,83 @@ form?.addEventListener('submit', async (e) => {
   setTimeout(() => toast?.classList.remove('show'), 2500);
 });
 
+// ====== Unified Active Nav Highlight ======
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = Array.from(document.querySelectorAll("nav.primary a"));
+  const mobLinks = Array.from(document.querySelectorAll("#mobnav a"));
+  const allLinks = [...navLinks, ...mobLinks];
+  const sections = Array.from(document.querySelectorAll("section[id]"));
+
+  function clearActive() {
+    allLinks.forEach(link => {
+      link.classList.remove("active-link");
+      link.removeAttribute("aria-current");
+    });
+  }
+
+  function activate(link) {
+    if (!link) return;
+    clearActive();
+    link.classList.add("active-link");
+    link.setAttribute("aria-current", "page");
+  }
+
+  function getCurrentFile() {
+    let path = window.location.pathname;
+    let file = path.substring(path.lastIndexOf("/") + 1);
+    if (file === "") file = "index.html";
+    return file;
+  }
+
+  function updateActive() {
+    const file = getCurrentFile();
+    const hash = window.location.hash.replace("#", "");
+
+    // ===== For index.html sections =====
+    if (file === "index.html") {
+      if (hash) {
+        const link = allLinks.find(a =>
+          (a.getAttribute("href") || "").includes("#" + hash)
+        );
+        if (link) return activate(link);
+      }
+
+      // Scroll-based highlighting
+      const scrollY = window.scrollY + 150;
+      let currentSection = null;
+      sections.forEach(sec => {
+        if (scrollY >= sec.offsetTop) currentSection = sec.id;
+      });
+
+      if (currentSection) {
+        const link = allLinks.find(a =>
+          (a.getAttribute("href") || "").endsWith("#" + currentSection)
+        );
+        if (link) return activate(link);
+      }
+
+      // Default: Features or top section
+      const homeLink = allLinks.find(a =>
+        (a.getAttribute("href") || "").includes("#features")
+      );
+      return activate(homeLink);
+    }
+
+    // ===== For separate pages =====
+    const activeLink = allLinks.find(a => {
+      const href = a.getAttribute("href") || "";
+      const hrefFile = href.split("/").pop();
+      return (
+        hrefFile === file ||
+        hrefFile === decodeURIComponent(file) ||
+        href === file
+      );
+    });
+
+    if (activeLink) activate(activeLink);
+  }
+
+  updateActive();
+  window.addEventListener("scroll", updateActive);
+  window.addEventListener("hashchange", updateActive);
+});
