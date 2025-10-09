@@ -1,15 +1,20 @@
-// Mobile nav toggle
+// ================== Mobile nav toggle ==================
 const menuBtn = document.getElementById('menuBtn');
 const mobnav = document.getElementById('mobnav');
 if (menuBtn && mobnav) {
   menuBtn.addEventListener('click', () => {
     const open = mobnav.hasAttribute('hidden') ? false : true;
-    if (open) { mobnav.setAttribute('hidden', ''); menuBtn.setAttribute('aria-expanded', 'false'); }
-    else { mobnav.removeAttribute('hidden'); menuBtn.setAttribute('aria-expanded', 'true'); }
+    if (open) { 
+      mobnav.setAttribute('hidden', ''); 
+      menuBtn.setAttribute('aria-expanded', 'false'); 
+    } else { 
+      mobnav.removeAttribute('hidden'); 
+      menuBtn.setAttribute('aria-expanded', 'true'); 
+    }
   });
 }
 
-// Theme toggle (persist in localStorage)
+// ================== Theme toggle (persist in localStorage) ==================
 const themeToggle = document.getElementById('themeToggle');
 const applyTheme = t => {
   if (t === 'light') document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
@@ -25,22 +30,18 @@ themeToggle?.addEventListener('click', () => {
   applyTheme(cur === 'dark' ? 'light' : 'dark');
 });
 
-// Smooth scroll back to top
-// const backTop = document.getElementById('scrollTop');
-// backTop?.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
-// ====== Back to Top (Anchor Version) ======
+// ================== Back to Top Button ==================
 const backToTop = document.getElementById("backToTop");
 
 window.addEventListener("scroll", () => {
   if (window.scrollY > 300) {
-    backToTop.classList.add("visible");
+    backToTop?.classList.add("visible");
   } else {
-    backToTop.classList.remove("visible");
+    backToTop?.classList.remove("visible");
   }
 });
 
-backToTop.addEventListener("click", (e) => {
+backToTop?.addEventListener("click", (e) => {
   e.preventDefault();
   window.scrollTo({
     top: 0,
@@ -48,7 +49,7 @@ backToTop.addEventListener("click", (e) => {
   });
 });
 
-// Beta form (demo)
+// ================== Beta form (demo) ==================
 const betaForm = document.getElementById('betaForm');
 const betaStatus = document.getElementById('betaStatus');
 betaForm?.addEventListener('submit', (e) => {
@@ -59,14 +60,20 @@ betaForm?.addEventListener('submit', (e) => {
   betaForm.reset();
 });
 
-// Video modal (lightweight)
+// ================== Video modal (lightweight) ==================
 const openVideo = document.getElementById('openVideo');
 openVideo?.addEventListener('click', () => {
   const wrap = document.createElement('div');
-  Object.assign(wrap.style, { position:'fixed', inset:'0', background:'rgba(0,0,0,0.6)', backdropFilter:'blur(6px)', display:'grid', placeItems:'center', zIndex:'100' });
+  Object.assign(wrap.style, { 
+    position:'fixed', inset:'0', background:'rgba(0,0,0,0.6)', 
+    backdropFilter:'blur(6px)', display:'grid', placeItems:'center', zIndex:'100' 
+  });
 
   const card = document.createElement('div');
-  Object.assign(card.style, { width:'min(900px, 92vw)', aspectRatio:'16/9', background:'black', borderRadius:'16px', overflow:'hidden', boxShadow:'var(--shadow)' });
+  Object.assign(card.style, { 
+    width:'min(900px, 92vw)', aspectRatio:'16/9', background:'black', 
+    borderRadius:'16px', overflow:'hidden', boxShadow:'var(--shadow)' 
+  });
   card.innerHTML = '<video controls autoplay style="width:100%;height:100%"><source src="" type="video/mp4">Your browser does not support the video tag.</video>';
 
   const close = document.createElement('button');
@@ -75,10 +82,12 @@ openVideo?.addEventListener('click', () => {
   Object.assign(close.style, { position:'absolute', top:'18px', right:'18px' });
   close.addEventListener('click', () => wrap.remove());
 
-  wrap.appendChild(card); wrap.appendChild(close); document.body.appendChild(wrap);
+  wrap.appendChild(card); 
+  wrap.appendChild(close); 
+  document.body.appendChild(wrap);
 });
 
-
+// ================== Navigation scroll highlight + smooth scroll ==================
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll("nav.primary a");
   const mobLinks = document.querySelectorAll("#mobnav a");
@@ -137,34 +146,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// ================== Typewriter for tagline ==================
 const taglineEl = document.getElementById('tagline');
-const text = taglineEl.textContent;
-taglineEl.textContent = '';
-let i = 0;
-
-function typeWriter() {
-  if(i < text.length){
-    taglineEl.textContent += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, 30); // typing speed
+if (taglineEl) {
+  const text = taglineEl.textContent;
+  taglineEl.textContent = '';
+  let i = 0;
+  function typeWriter() {
+    if(i < text.length){
+      taglineEl.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 30); // typing speed
+    }
   }
+  typeWriter();
 }
-typeWriter();
 
-
+// ================== Feature card animation ==================
 const featureCards = document.querySelectorAll('.feature-card');
+if (featureCards.length) {
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
 
-const observer = new IntersectionObserver(
-  entries => {
+  featureCards.forEach(card => observer.observe(card));
+}
+
+// ================== Section fade-in / slide-up animation ==================
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".section");
+
+  const observerOptions = { threshold: 0.2 };
+
+  const sectionObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-        observer.unobserve(entry.target);
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // animate once
       }
     });
-  },
-  { threshold: 0.2 }
-);
+  }, observerOptions);
 
-featureCards.forEach(card => observer.observe(card));
-
+  sections.forEach(section => sectionObserver.observe(section));
+});
