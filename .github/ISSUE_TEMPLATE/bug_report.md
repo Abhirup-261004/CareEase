@@ -15,7 +15,7 @@ A clear and concise description of what the bug is.
 3. Scroll down to '...'
 4. See the error
 
-## 🖼️ Screenshots
+## 🖼️ Screenshots or Recordings
 If applicable, add screenshots to help explain your problem.
 
 ## 💻 Environment
