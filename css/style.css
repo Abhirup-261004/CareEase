@@ -102,7 +102,7 @@ nav.primary {
 nav.primary a {
   color: var(--muted);
   font-weight: 600;
-  padding: 8px 16px;
+  padding: 8px 10px;
   margin: -4px;
   border-radius: 5px;
   background-color: transparent; 
@@ -111,7 +111,7 @@ nav.primary a {
   background-origin: border-box;
   background-clip: padding-box;
   transition: all 0.3s ease;
-  /* justify-content: flex-end; */
+  
 }
 nav.primary a:hover{
   color: #e0e0e0;
