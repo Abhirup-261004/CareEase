@@ -102,7 +102,23 @@ nav.primary {
 nav.primary a {
   color: var(--muted);
   font-weight: 600;
+  padding: 8px 10px;
+  margin: -4px;
+  border-radius: 5px;
+  background-color: transparent; 
+  position: relative;
+  border: 1px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box;
+  transition: all 0.3s ease;
+  
 }
+nav.primary a:hover{
+  color: #e0e0e0;
+  box-shadow: 0 0 15px rgba(82, 238, 238, 0.774);
+  
+}
+
 
 html {
   scroll-behavior: smooth;
@@ -148,6 +164,11 @@ button.btn {
   background: transparent;
   outline: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--text);
+}
+.btn-outline:hover{
+  color: #e0e0e0;
+  box-shadow: 0 0 15px rgba(82, 238, 238, 0.774);
+
 }
 .hamburger {
   display: none;
