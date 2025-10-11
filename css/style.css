@@ -95,15 +95,17 @@ a {
 
 nav.primary {
   display: flex;
-  gap: 20px;
+  gap:8px;
   align-items: center;
+  margin-left:80px;
+  white-space: nowrap;
 }
 
 nav.primary a {
   color: var(--muted);
   font-weight: 600;
   padding: 8px 10px;
-  margin: -4px;
+  margin: 8px;
   border-radius: 5px;
   background-color: transparent; 
   position: relative;
@@ -115,7 +117,7 @@ nav.primary a {
 }
 nav.primary a:hover{
   color: #e0e0e0;
-  box-shadow: 0 0 15px rgba(82, 238, 238, 0.774);
+  box-shadow: 0 0 15px rgba(172, 255, 255, 0.774);
   
 }
 
@@ -760,7 +762,7 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1512px) {
   .hero-grid,
   .how-grid {
     grid-template-columns: 1fr;
