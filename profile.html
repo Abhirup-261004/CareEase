@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile — CareEase</title>
+  <meta name="description" content="Manage your CareEase profile and preferences." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container row">
+      <a class="brand" href="index.html" aria-label="CareEase home">
+        <img src="assets/logo.svg" alt="CareEase Logo" class="brand-logo" />
+        <span>CareEase</span>
+      </a>
+      <nav class="primary" aria-label="Primary">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+        <a href="reminders.html">Reminders</a>
+        <a href="blog.html">Blog</a>
+        <button id="themeToggle" class="btn btn-outline" aria-pressed="false" aria-label="Toggle theme">🌓 Theme</button>
+        <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
+      </nav>
+      <button class="hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobnav">☰</button>
+    </div>
+
+    <div id="mobnav" hidden class="container" style="padding-top:0; padding-bottom:16px">
+      <div class="card mobmenu">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+        <a href="reminders.html">Reminders</a>
+        <a href="blog.html">Blog</a>
+        <a href="auth.html#signin" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="display" style="margin-top:8px">Your Profile</h1>
+        <p class="muted">Update your basic information and preferences. These settings persist on this device.</p>
+
+        <div class="card" style="margin-top:16px">
+          <form id="profileForm" class="form" novalidate>
+            <label>
+              <span class="label">Name</span>
+              <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            </label>
+            <label>
+              <span class="label">Email</span>
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" readonly />
+            </label>
+
+            <label>
+              <span class="label">Theme</span>
+              <select name="theme">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+              </select>
+            </label>
+
+            <label>
+              <span class="label">Default Reminder Time</span>
+              <input type="time" name="defaultTime" />
+            </label>
+
+            <label>
+              <span class="label">Notification Sound</span>
+              <select name="sound">
+                <option value="beep">Beep (default)</option>
+                <option value="chime">Chime</option>
+                <option value="off">Silent</option>
+              </select>
+            </label>
+
+            <div class="full" style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px">
+              <button class="btn btn-primary" type="submit">Save</button>
+              <button class="btn btn-outline" type="button" id="resetPrefs">Reset</button>
+              <button class="btn btn-ghost" type="button" id="signOut">Sign out</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="features" style="margin-top:18px">
+          <article class="card">
+            <h3>Theme</h3>
+            <p class="muted">Your selection applies across all pages on this device.</p>
+          </article>
+          <article class="card">
+            <h3>Reminders default</h3>
+            <p class="muted">New reminders prefill with your chosen time.</p>
+          </article>
+          <article class="card">
+            <h3>Notification sound</h3>
+            <p class="muted">Choose how alerts sound. Silent disables audio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot-grid">
+      <div>© <b>CareEase</b> — Built by Tech Titans</div>
+      <div class="foot-links">
+        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" id="scrollTop">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

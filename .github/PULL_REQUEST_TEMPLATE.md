@@ -19,7 +19,7 @@ Select all that apply:
 Describe the tests you ran to verify your changes.  
 Provide instructions so others can reproduce. Include screenshots if applicable.
 
-## 📸 Screenshots (if applicable)
+## 📸 Screenshots or Recordings(if applicable)
 If the UI or design changed, add before/after screenshots here.
 
 ## ✅ Checklist

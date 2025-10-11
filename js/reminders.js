@@ -47,7 +47,13 @@ function fmtTime(t24) {
 }
 
 function chipForType(type) {
-  const map = { medicine: '💊', vitals: '🩺', appointment: '📅', other: '⏰' };
+  const map = {
+    medicine: '💊',
+    vitals: '🩺',
+    appointment: '📅',
+    other: '⏰',
+    security: '⚠️'
+  };
   return `<span class="badge" style="width:auto;padding:0 10px">${map[type] || '⏰'}</span>`;
 }
 
@@ -99,8 +105,10 @@ function render() {
   missedEmpty.style.display = state.missed.length ? 'none' : 'block';
 }
 
-function showToast(msg) {
+function showToast(msg, color = '') {
   toast.textContent = msg;
+  toast.style.background = color || '';
+  toast.style.color = color ? '#fff' : '';
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 2200);
 }
@@ -123,7 +131,7 @@ function deleteReminder(id) {
 // ---------- Scheduling ----------
 function todayISO() {
   const d = new Date();
-  return d.toISOString().slice(0, 10); // YYYY-MM-DD
+  return d.toISOString().slice(0, 10);
 }
 
 function nextFireDate(rem) {
@@ -210,13 +218,67 @@ function startBell() {
   }
 }
 
+// 🚨 Security Alert Alarm (louder + faster)
+function startSecurityAlarm() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = 'square';
+    o.frequency.value = 1100;
+    g.gain.value = 0.0001;
+    o.connect(g);
+    g.connect(ctx.destination);
+    o.start();
+
+    let on = false;
+    const iv = setInterval(() => {
+      on = !on;
+      g.gain.exponentialRampToValueAtTime(on ? 0.12 : 0.0001, ctx.currentTime + 0.02);
+      o.frequency.value = on ? 1400 : 1000;
+    }, 300);
+
+    const stop = () => {
+      clearInterval(iv);
+      o.stop();
+      ctx.close();
+    };
+    return stop;
+  } catch {
+    return () => {};
+  }
+}
+
 function ring(rem) {
   if (state.ringingId) return;
   state.ringingId = rem.id;
+
+  if (rem.type === "security") {
+    state.ringStopper = startSecurityAlarm();
+    toast.textContent = `🚨 SECURITY ALERT: ${rem.title}`;
+    toast.style.background = "#d32f2f";
+    toast.style.color = "#fff";
+    toast.classList.add('show');
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+      if (state.ringingId === rem.id) {
+        stopRing();
+        logMissed(rem, 'Security alert not acknowledged');
+      }
+    }, 10000);
+    return;
+  }
+
+  // Normal reminder
   state.ringStopper = startBell();
-  showToast(`🔔 ${rem.title} — it’s time!`);
+  toast.textContent = `🔔 ${rem.title} — it’s time!`;
+  toast.style.background = "";
+  toast.style.color = "";
+  toast.classList.add('show');
 
   setTimeout(() => {
+    toast.classList.remove('show');
     if (state.ringingId === rem.id) {
       stopRing();
       logMissed(rem, 'No response (30s)');
@@ -228,6 +290,8 @@ function stopRing() {
   state.ringStopper?.();
   state.ringingId = null;
   state.ringStopper = null;
+  toast.style.background = "";
+  toast.style.color = "";
 }
 
 function acknowledge(rem) {
@@ -303,7 +367,7 @@ list?.addEventListener('click', e => {
 });
 
 $$('#testBell')?.addEventListener('click', () => {
-  ring({ id: 'test', title: 'Test reminder' });
+  ring({ id: 'test', title: 'Test reminder', type: 'other' });
   setTimeout(() => stopRing(), 2500);
 });
 
