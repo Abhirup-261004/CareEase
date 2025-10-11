@@ -284,3 +284,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 50); // typing speed
   });
 });
+
+
+// Typewriter & Scroll Effects for Contact Page
+document.addEventListener("DOMContentLoaded", () => {
+  const title = document.querySelector("h1.display");
+  if (title) {
+    title.setAttribute("data-typewriter", "");
+    setTimeout(() => title.classList.add("finished"), 2000);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".section, [data-reveal]").forEach(el => observer.observe(el));
+});
+
