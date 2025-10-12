@@ -93,6 +93,161 @@
     </div>
   </section>
 
+  <style>
+    /* GENERAL HERO STYLING */
+.hero {
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* EYEBROW & TYPEWRITER */
+.eyebrow {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  color: #00ffc1;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInUp 0.6s forwards 0.2s;
+}
+
+[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #00ffc1;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards 0.4s;
+}
+
+/* HEADLINE & LEAD */
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.6s;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.8s;
+}
+
+/* CTA BUTTONS */
+.cta-row a {
+  margin-right: 1rem;
+  padding: 0.75rem 1.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-row a.btn-primary:hover {
+  background: #00ffc1;
+  color: #1e1e2f;
+  transform: translateY(-3px) scale(1.05);
+}
+
+.cta-row a.btn-outline:hover {
+  border-color: #00ffc1;
+  color: #00ffc1;
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* HERO STATS */
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.hero-stats .stat {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+}
+
+.hero-stats .stat:nth-child(1) { animation-delay: 1.0s; }
+.hero-stats .stat:nth-child(2) { animation-delay: 1.2s; }
+.hero-stats .stat:nth-child(3) { animation-delay: 1.4s; }
+
+/* MOCK SCREEN */
+.mock .screen {
+  background: #222238;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.mock .screen:hover {
+  transform: rotateY(5deg) scale(1.03);
+}
+
+/* APP CARDS */
+.app-card {
+  background: #2a2a40;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.app-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,255,193,0.3);
+}
+
+/* CHIPS HOVER */
+.app-footer .chip {
+  background: #1e1e2f;
+  padding: 0.3rem 0.8rem;
+  margin-right: 0.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.app-footer .chip:hover {
+  background: #00ffc1;
+  color: #1e1e2f;
+  transform: scale(1.1);
+}
+
+/* SCROLL ANIMATION */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* TYPEWRITER */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blinkCaret {
+  50% { border-color: transparent }
+}
+
+  </style>
   <!-- ====== Mission ====== -->
   <section class="section">
     <div class="container">
@@ -110,6 +265,79 @@
       </div>
     </div>
   </section>
+
+  <style>
+    .section {
+  padding: 5rem 2rem;
+  background: #1e1e2f;
+  color: #fff;
+  overflow: hidden;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.2s;
+  color: #00ffc1;
+}
+
+.section .muted {
+  color: #ccc;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.4s;
+}
+
+/* CARD STYLING */
+.section .card {
+  background: #222238;
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  margin-top: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.6s;
+}
+
+.section .card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,255,193,0.4);
+}
+
+/* LIST ITEMS */
+.section .list li {
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.section .list li:hover b {
+  color: #00ffc1;
+  text-decoration: underline;
+}
+
+/* TYPEWRITER */
+[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #00ffc1;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards 0.2s;
+}
+
+/* SCROLL ANIMATION */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
 
   <!-- ====== What we do ====== -->
   <section class="section">
@@ -135,6 +363,102 @@
       </div>
     </div>
   </section>
+  <style>
+    .section {
+  padding: 5rem 2rem;
+  background: #1e1e2f;
+  color: #fff;
+  overflow: hidden;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.2s;
+  color: #00ffc1;
+}
+
+.section .muted {
+  color: #ccc;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.4s;
+}
+
+.features {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.features .card {
+  background: #222238;
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.features .card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0,255,193,0.4);
+}
+
+.features .card h3 {
+  color: #00ffc1;
+  transition: all 0.3s ease;
+}
+
+.features .card:hover h3 {
+  text-decoration: underline;
+}
+
+.features .card p {
+  color: #ccc;
+}
+
+.features .card .icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, stroke 0.3s ease;
+}
+
+.features .card:hover .icon {
+  transform: scale(1.2) rotate(10deg);
+  stroke: #00ffc1;
+}
+
+/* TYPEWRITER */
+[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #00ffc1;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards 0.2s;
+}
+
+/* SCROLL ANIMATION */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
 
   <!-- ====== Values ====== -->
   <section class="section">
@@ -154,6 +478,70 @@
     </div>
   </section>
 
+  <style>
+    .section {
+  padding: 5rem 2rem;
+  background: #1e1e2f;
+  color: #fff;
+  overflow: hidden;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.2s;
+  color: #00ffc1;
+}
+
+.quotes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.quotes blockquote {
+  background: #222238;
+  padding: 1.5rem 1.8rem;
+  border-left: 4px solid #00ffc1;
+  border-radius: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+  transition: all 0.3s ease;
+}
+
+.quotes blockquote:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,255,193,0.3);
+}
+
+.quotes blockquote p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #ccc;
+}
+
+/* TYPEWRITER */
+[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #00ffc1;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards 0.2s;
+}
+
+/* SCROLL ANIMATION */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
 
   <!-- ====== Team Section ====== -->
 <section class="section">
@@ -268,6 +656,7 @@
   line-height: 1.4;
 }
 
+
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   .section {
@@ -324,6 +713,92 @@
     </div>
   </section>
 
+  <style>
+    .section {
+  padding: 5rem 2rem;
+  background: #1e1e2f;
+  color: #fff;
+  overflow: hidden;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.2s;
+  color: #00ffc1;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  background: #222238;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+  transition: all 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,255,193,0.3);
+}
+
+.step .badge {
+  display: inline-block;
+  background: #00ffc1;
+  color: #1e1e2f;
+  font-weight: bold;
+  font-size: 1.25rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  text-align: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.step div b {
+  display: block;
+  font-size: 1.125rem;
+  margin-bottom: 0.3rem;
+  color: #fff;
+}
+
+.step div .muted {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* TYPEWRITER */
+[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #00ffc1;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards 0.2s;
+}
+
+/* SCROLL ANIMATION */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
+
   <!-- ====== Accessibility & Privacy ====== -->
   <section class="section">
     <div class="container">
@@ -340,6 +815,76 @@
       </div>
     </div>
   </section>
+
+  <style>
+    .section {
+  padding: 5rem 2rem;
+  background: #1e1e2f;
+  color: #fff;
+  overflow: hidden;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.2s;
+  color: #00ffc1;
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.faq-item {
+  background: #222238;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,255,193,0.3);
+}
+
+.faq-item b {
+  display: block;
+  font-size: 1.125rem;
+  margin-bottom: 0.3rem;
+  color: #fff;
+}
+
+.faq-item .muted {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* TYPEWRITER */
+[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #00ffc1;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards 0.2s;
+}
+
+/* SCROLL ANIMATION */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
 
   <!-- ====== CTA ====== -->
   <section class="section">
@@ -359,6 +904,103 @@
     </div>
   </section>
 
+  <style>
+    .section.cta {
+  padding: 5rem 2rem;
+  background: #151526;
+  color: #fff;
+  overflow: hidden;
+}
+
+.cta-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #00ffc1;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.2s;
+}
+
+.cta .muted {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.4s;
+}
+
+form.beta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #222238;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,255,193,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.6s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form.beta:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 30px rgba(0,255,193,0.3);
+}
+
+form.beta label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+form.beta input {
+  padding: 0.75rem 1rem;
+  margin-top: 0.3rem;
+  border-radius: 0.75rem;
+  border: 1px solid #444;
+  background: #1e1e2f;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+form.beta input:focus {
+  border-color: #00ffc1;
+  box-shadow: 0 0 10px rgba(0,255,193,0.3);
+  outline: none;
+}
+
+form.beta button.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+form.beta button.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,255,193,0.3);
+}
+
+/* Scroll animation */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Typewriter for CTA title */
+[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #00ffc1;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards 0.2s;
+}
+
+  </style>
   <!-- ====== Footer ====== -->
     <!-- ====== Footer ====== -->
     <footer class="site-footer" style="  background: linear-gradient(135deg, var(--primaryA), var(--primaryB));">
@@ -461,6 +1103,25 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", updateActive);
   window.addEventListener("hashchange", updateActive);
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll("[data-typewriter]");
+
+  elements.forEach(el => {
+    const text = el.textContent;
+    el.textContent = "";
+    el.style.opacity = 1;
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 80);
+      }
+    }
+    type();
+  });
+});
+
 </script>
 <script src="js/navbar-integration.js"></script>
 </body>
