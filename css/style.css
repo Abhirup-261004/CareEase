@@ -1061,6 +1061,7 @@ html {
 }
 }
 
+
 /* ===== Typewriter Effect (for Contact Heading) ===== */
 h1.display[data-typewriter] {
   display: inline-block;
@@ -1160,3 +1161,4 @@ form textarea:focus {
   box-shadow: 0 0 8px rgba(192, 132, 252, 0.4);
   transition: box-shadow 0.3s ease;
 }
+
