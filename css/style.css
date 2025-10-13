@@ -1137,7 +1137,8 @@ h1.display[data-typewriter].finished {
 /* ===== Gradient Accent for Eyebrow or Important Text ===== */
 .eyebrow {
   background: linear-gradient(90deg, #6ee7b7, #60a5fa, #c084fc);
-  -webkit-background-clip: text;
+  background-clip: text;             /* ✅ Standard version */
+  -webkit-background-clip: text;     /* ✅ WebKit fallback */
   -webkit-text-fill-color: transparent;
   font-weight: 600;
 }
