@@ -15,20 +15,38 @@ if (menuBtn && mobnav) {
 }
 
 // ================== Theme toggle (persist in localStorage) ==================
+// const themeToggle = document.getElementById('themeToggle');
+// const applyTheme = t => {
+//   if (t === 'light') document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
+//   else document.documentElement.style.filter = '';
+//   localStorage.setItem('ce_theme', t);
+//   themeToggle?.setAttribute('aria-pressed', String(t === 'light'));
+// };
+// const saved = localStorage.getItem('ce_theme');
+// if (saved) applyTheme(saved);
+
+// themeToggle?.addEventListener('click', () => {
+//   const cur = localStorage.getItem('ce_theme') || 'dark';
+//   applyTheme(cur === 'dark' ? 'light' : 'dark');
+// });
+// ================== Theme toggle (logo-safe) ==================
 const themeToggle = document.getElementById('themeToggle');
-const applyTheme = t => {
-  if (t === 'light') document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
-  else document.documentElement.style.filter = '';
-  localStorage.setItem('ce_theme', t);
-  themeToggle?.setAttribute('aria-pressed', String(t === 'light'));
+
+const applyTheme = (theme) => {
+  document.body.dataset.theme = theme;
+  localStorage.setItem('ce_theme', theme);
+  themeToggle?.setAttribute('aria-pressed', String(theme === 'light'));
 };
-const saved = localStorage.getItem('ce_theme');
-if (saved) applyTheme(saved);
+
+const savedTheme = localStorage.getItem('ce_theme') || 'dark';
+applyTheme(savedTheme);
 
 themeToggle?.addEventListener('click', () => {
-  const cur = localStorage.getItem('ce_theme') || 'dark';
-  applyTheme(cur === 'dark' ? 'light' : 'dark');
+  const current = localStorage.getItem('ce_theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
 });
+
 
 // ================== Back to Top Button ==================
 const backToTop = document.getElementById("backToTop");
