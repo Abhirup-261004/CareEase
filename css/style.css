@@ -1213,22 +1213,3 @@ body[data-theme="dark"] .topbar {
   background-color: #2a2a2a !important;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
 }
-
-/* === Ensure text shows correctly in dark mode (.dark class) === */
-.dark body,
-.dark p,
-.dark h1,
-.dark h2,
-.dark h3,
-.dark h4,
-.dark h5,
-.dark h6,
-.dark a,
-.dark span,
-.dark div {
-  color: #e8eef9 !important; /* light text for dark background */
-}
-
-.dark .muted {
-  color: #9fb0c9 !important; /* softer secondary text */
-}
