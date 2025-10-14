@@ -263,10 +263,23 @@ const testiObserver = new IntersectionObserver(
 );
 
 testimonials.forEach(card => testiObserver.observe(card));
-
-featureCards.forEach((card) => observer.observe(card))
-
 document.addEventListener("DOMContentLoaded", () => {
+  // --- Feature cards observer ---
+  const featureCards = document.querySelectorAll(".features .card");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  featureCards.forEach((card) => observer.observe(card));
+
+  // --- Typewriter effect ---
   const elements = document.querySelectorAll("[data-typewriter]");
 
   elements.forEach((el) => {
@@ -285,6 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 50); // typing speed
   });
 });
+
 
 
 // Typewriter & Scroll Effects for Contact Page
