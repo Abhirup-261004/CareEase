@@ -304,4 +304,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".section, [data-reveal]").forEach(el => observer.observe(el));
 });
-
