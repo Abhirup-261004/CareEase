@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareEase – Smart Health Manager</title>
+  <style>
+    :root {
+      --primary: #1d9bf0;
+      --accent: #10b981;
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #147ac3;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .list-item {
+      background: #f3f4f6;
+      margin-bottom: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .delete-btn {
+      background: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .dashboard {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .dashboard h3 {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CareEase – Your Smart Health Companion 💙</h1>
+    <p>Manage your medical reminders, appointments, and health insights in one place.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>🩺 Medical Reminders</h2>
+      <label for="reminderText">Add Reminder:</label>
+      <input type="text" id="reminderText" placeholder="e.g. Take blood pressure medicine at 8 AM">
+      <button id="addReminder">Add Reminder</button>
+      <ul id="reminderList"></ul>
+    </section>
+
+    <section class="card">
+      <h2>📅 Appointment Scheduler</h2>
+      <label for="doctor">Doctor's Name:</label>
+      <input type="text" id="doctor" placeholder="e.g. Dr. Sharma">
+      <label for="date">Date:</label>
+      <input type="date" id="date">
+      <label for="time">Time:</label>
+      <input type="time" id="time">
+      <button id="scheduleBtn">Schedule Appointment</button>
+      <ul id="appointmentList"></ul>
+    </section>
+
+    <section class="dashboard">
+      <h2>📊 Health Dashboard</h2>
+      <h3>Today’s Summary</h3>
+      <p id="summary">No reminders or appointments yet. Stay healthy!</p>
+    </section>
+  </main>
+
+  <footer>© 2025 CareEase. All rights reserved.</footer>
+
+  <script>
+    const reminders = [];
+    const appointments = [];
+
+    const reminderInput = document.getElementById('reminderText');
+    const reminderList = document.getElementById('reminderList');
+    const addReminderBtn = document.getElementById('addReminder');
+
+    const doctorInput = document.getElementById('doctor');
+    const dateInput = document.getElementById('date');
+    const timeInput = document.getElementById('time');
+    const scheduleBtn = document.getElementById('scheduleBtn');
+    const appointmentList = document.getElementById('appointmentList');
+
+    const summary = document.getElementById('summary');
+
+    addReminderBtn.addEventListener('click', () => {
+      const text = reminderInput.value.trim();
+      if (text) {
+        reminders.push(text);
+        updateReminders();
+        updateSummary();
+        reminderInput.value = '';
+      }
+    });
+
+    scheduleBtn.addEventListener('click', () => {
+      const doctor = doctorInput.value.trim();
+      const date = dateInput.value;
+      const time = timeInput.value;
+      if (doctor && date && time) {
+        const entry = `${doctor} - ${date} at ${time}`;
+        appointments.push(entry);
+        updateAppointments();
+        updateSummary();
+        doctorInput.value = '';
+        dateInput.value = '';
+        timeInput.value = '';
+      }
+    });
+
+    function updateReminders() {
+      reminderList.innerHTML = '';
+      reminders.forEach((r, i) => {
+        const li = document.createElement('li');
+        li.classList.add('list-item');
+        li.innerHTML = `${r} <button class='delete-btn' onclick='deleteReminder(${i})'>✓</button>`;
+        reminderList.appendChild(li);
+      });
+    }
+
+    function deleteReminder(i) {
+      reminders.splice(i, 1);
+      updateReminders();
+      updateSummary();
+    }
+
+    function updateAppointments() {
+      appointmentList.innerHTML = '';
+      appointments.forEach((a, i) => {
+        const li = document.createElement('li');
+        li.classList.add('list-item');
+        li.innerHTML = `${a} <button class='delete-btn' onclick='deleteAppointment(${i})'>🗑</button>`;
+        appointmentList.appendChild(li);
+      });
+    }
+
+    function deleteAppointment(i) {
+      appointments.splice(i, 1);
+      updateAppointments();
+      updateSummary();
+    }
+
+    function updateSummary() {
+      if (reminders.length === 0 && appointments.length === 0) {
+        summary.textContent = 'No reminders or appointments yet. Stay healthy!';
+      } else {
+        summary.textContent = `You have ${reminders.length} reminder(s) and ${appointments.length} appointment(s) today.`;
+      }
+    }
+  </script>
+</body>
+</html>
