@@ -277,8 +277,9 @@ document.addEventListener("DOMContentLoaded", () => {
     { threshold: 0.1 }
   );
 
-  featureCards.forEach((card) => observer.observe(card));
+featureCards.forEach((card) => observer.observe(card));
 
+document.addEventListener("DOMContentLoaded", () => {
   // --- Typewriter effect ---
   const elements = document.querySelectorAll("[data-typewriter]");
 
@@ -317,4 +318,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.1 });
 
   document.querySelectorAll(".section, [data-reveal]").forEach(el => observer.observe(el));
-});
+})});
