@@ -336,29 +336,135 @@ CareEase helps you schedule medicine & appointment reminders, catch missed alert
 </section>
 
   <!-- ====== FAQ ====== -->
-  <section id="faq" class="section">
-    <div class="container">
-      <h2  data-typewriter>FAQ</h2>
-      <div class="faq">
-        <details class="faq-item">
-          <summary>Is my data private?</summary>
-          <div class="muted">Yes. The beta stores data locally in your browser. Cloud sync will be opt‑in later.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Does it work offline?</summary>
-          <div class="muted">Core features continue to work offline. Alerts fire when your device is awake.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Can I share reminders with family?</summary>
-          <div class="muted">Care Circles (invite a caregiver/family member) is planned for the next milestone.</div>
-        </details>
-        <details class="faq-item">
-          <summary>What devices are supported?</summary>
-          <div class="muted">Modern browsers on Android, iOS, Windows, and macOS. Best on mobile.</div>
-        </details>
-      </div>
+<section id="faq" class="section">
+  <div class="container">
+    <h2 data-typewriter>FAQ</h2>
+    <div class="faq">
+      <details class="faq-item">
+        <summary>
+          Is my data private?
+          <span class="icon">▼</span>
+        </summary>
+        <div class="muted">Yes. The beta stores data locally in your browser. Cloud sync will be opt‑in later.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Does it work offline?
+          <span class="icon">▼</span>
+        </summary>
+        <div class="muted">Core features continue to work offline. Alerts fire when your device is awake.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          Can I share reminders with family?
+          <span class="icon">▼</span>
+        </summary>
+        <div class="muted">Care Circles (invite a caregiver/family member) is planned for the next milestone.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          What devices are supported?
+          <span class="icon">▼</span>
+        </summary>
+        <div class="muted">Modern browsers on Android, iOS, Windows, and macOS. Best on mobile.</div>
+      </details>
     </div>
-  </section>
+  </div>
+</section>
+<style>
+/* FAQ container */
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Details & summary styling */
+/* FAQ */
+.faq {
+  display: grid;
+  grid-template-columns: 1fr; /* one per row */
+  gap: 16px;
+  margin-top: 12px;
+}
+
+
+.faq-item {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.faq-item[open] {
+  outline: 2px solid var(--primaryA);
+}
+
+/* Details & summary styling */
+.faq-item summary {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s, color 0.3s;
+  background-color: var(--surface);
+}
+
+.faq-item summary:hover,
+.faq-item summary:focus {
+  background-color: var(--bg-soft);
+  color: var(--primaryB);
+  outline: none;
+}
+
+/* Answer styling */
+.faq-item .muted {
+  padding: 0 1rem 1rem 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background-color: var(--surface);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* Open/close icon */
+.faq-item .icon {
+  transition: transform 0.3s ease;
+  color: var(--primaryB);
+}
+
+/* Animate icon rotation & answer display */
+.faq-item[open] .icon {
+  transform: rotate(180deg);
+}
+
+.faq-item[open] .muted {
+  max-height: 500px; /* enough for content */
+  padding: 0.5rem 1rem 1rem 1rem;
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+  .faq-item summary,
+  .faq-item .muted {
+    padding: 0.75rem 1rem;
+  }
+}
+
+</style>
+
+
 
   <!-- ====== Contact & CTA ====== -->
   <section id="contact" class="section">
