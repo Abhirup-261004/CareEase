@@ -8,6 +8,180 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
+  
+  <style>
+/* ====== SECTION BASE ====== */
+.section {
+  padding: 5rem 2rem;
+  background: #1e1e2f;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* HEADINGS */
+.section h1,
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.2s;
+}
+
+/* TYPEWRITER + GLOW + FADE-IN */
+h1.display[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #00ffc1; /* caret */
+  white-space: nowrap;
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 48px);
+  background: linear-gradient(90deg, #6ee7b7, #c084fc, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(110,231,183,0.25), 0 0 20px rgba(192,132,252,0.25);
+  
+  opacity: 1;           /* visible */
+  width: 0;             /* start hidden */
+  animation: 
+    typing 2s steps(12, end) forwards,   /* typewriter effect */
+    heroGlow 3s ease-in-out infinite alternate; /* glow */
+}
+ 
+/* Remove caret after typing finishes */
+h1.display[data-typewriter].finished {
+  border-right: none;
+  width: fit-content;   /* keep text visible */
+}
+
+/* TYPEWRITER ANIMATION */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* GLOW EFFECT */
+@keyframes heroGlow {
+  0% { text-shadow: 0 0 10px rgba(110,231,183,0.25), 0 0 20px rgba(192,132,252,0.25); }
+  100% { text-shadow: 0 0 20px rgba(110,231,183,0.5), 0 0 30px rgba(192,132,252,0.5); }
+}
+
+
+/* MUTED TEXT */
+.section .muted {
+  color: #ccc;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 2.3s;
+}
+
+/* ====== CARD STYLING ====== */
+.section .card {
+  background: #222238;
+  padding: 1.5rem;
+  border-radius: 1.2rem;
+  margin-top: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 2.5s;
+}
+
+.section .card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,255,193,0.4);
+}
+
+/* ====== FORM ====== */
+.form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 0.25rem;
+  background: #1e1e2f;
+  border: 1px solid #444;
+  border-radius: 0.6rem;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.form input:focus,
+.form select:focus {
+  border-color: #00ffc1;
+  outline: none;
+}
+
+/* ====== BUTTONS ====== */
+.btn {
+  padding: 0.75rem 1.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #00ffc1;
+  color: #1e1e2f;
+  transform: translateY(-3px) scale(1.05);
+}
+
+.btn-outline:hover {
+  border-color: #00ffc1;
+  color: #00ffc1;
+  transform: translateY(-3px) scale(1.05);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.btn-ghost:hover {
+  border-color: #00ffc1;
+  color: #00ffc1;
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* ====== FEATURE CARDS ====== */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.features .card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.features .card p {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* ====== LIST ITEMS ====== */
+.section .list li {
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.section .list li:hover b {
+  color: #00ffc1;
+  text-decoration: underline;
+}
+
+/* ====== ANIMATIONS ====== */
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -47,7 +221,8 @@
   <main>
     <section class="section">
       <div class="container">
-        <h1 class="display" style="margin-top:8px">Your Profile</h1>
+      <h1 class="display" data-typewriter style="margin-top:8px">Your Profile</h1>
+
         <p class="muted">Update your basic information and preferences. These settings persist on this device.</p>
 
         <div class="card" style="margin-top:16px">
@@ -109,28 +284,36 @@
     </section>
   </main>
 
-    <!-- ====== Footer ====== -->
-    <footer class="site-footer" style="  background: linear-gradient(135deg, var(--primaryA), var(--primaryB));">
-      <div class="container foot-grid">
-        <div class="footer-left" style="font-size:20px;color:black;">
-          &copy; <b>CareEase</b> — Built by <span class="highlight">Tech Titans</span>
-        </div>
-    
-        <div class="foot-links" style="font-size:18px;color:black">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-          <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener" aria-label="GitHub">
-            <i class="fa-brands fa-github" style="font-size:25px"></i>
-          </a>
-          <a href="#" id="backToTop" aria-label="Back to top">
-            <i class="fa-solid fa-arrow-up"></i>
-          </a>
-        </div>
+  <!-- ====== Footer ====== -->
+  <footer class="site-footer" style="background: linear-gradient(135deg, var(--primaryA), var(--primaryB));">
+    <div class="container foot-grid">
+      <div class="footer-left" style="font-size:20px;color:black;">
+        &copy; <b>CareEase</b> — Built by <span class="highlight">Tech Titans</span>
       </div>
-    </footer>
+
+      <div class="foot-links" style="font-size:18px;color:black">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github" style="font-size:25px"></i>
+        </a>
+        <a href="#" id="backToTop" aria-label="Back to top">
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script>
+    const h1 = document.querySelector('h1.display[data-typewriter]');
+    h1.addEventListener('animationend', (e) => {
+      if(e.animationName === 'typing') {
+        h1.classList.add('finished');
+      }
+    });
+  </script>
   <script src="js/app.js"></script>
   <script src="js/profile.js"></script>
 </body>
