@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>License — CareEase</title>
+  <meta name="description" content="MIT License for CareEase - Open source healthcare reminder application" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .license-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    
+    .license-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .license-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--primaryA), var(--primaryB));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .license-box {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .license-text {
+      font-family: 'Courier New', monospace;
+      background: var(--bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--primaryA);
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+    
+    .key-points {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .point-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--primaryA);
+      transition: transform 0.2s ease;
+    }
+    
+    .point-card:hover {
+      transform: translateX(8px);
+    }
+    
+    .point-icon {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primaryA), var(--primaryB));
+      color: white;
+      text-align: center;
+      line-height: 32px;
+      margin-right: 1rem;
+      font-weight: bold;
+    }
+    
+    .point-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .point-desc {
+      margin-left: 3rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    
+    .highlight-box {
+      background: linear-gradient(135deg, var(--primaryA), var(--primaryB));
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-card);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    .back-button:hover {
+      transform: translateX(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+  <!-- ====== Topbar ====== -->
+  <header class="topbar">
+    <div class="container row">
+      <a class="brand" href="index.html" aria-label="CareEase home">
+        <img class="brand-logo" src="assets/logo2.png" alt="CareEase Logo">
+        <span style="font-size: 24px;">CareEase</span>
+      </a>
+
+      <nav class="primary" style="font-size: 18px;" aria-label="Primary">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+        <button id="themeToggle" class="btn btn-outline" aria-pressed="false" aria-label="Toggle theme">🌓 Theme</button>
+      </nav>
+
+      <button class="hamburger" id="menuBtn" style="font-size:28px" aria-expanded="false" aria-controls="mobnav">☰</button>
+    </div>
+
+    <div id="mobnav" hidden class="container" style="padding-top:0; padding-bottom:16px">
+      <div class="card mobmenu">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== Main Content ====== -->
+  <main class="license-container">
+    <a href="index.html" class="back-button">
+      <i class="fa-solid fa-arrow-left"></i>
+      Back to Home
+    </a>
+
+    <div class="license-header">
+      <h1>Open Source License</h1>
+      <p class="muted">CareEase is free and open source software</p>
+    </div>
+
+    <div class="highlight-box">
+      <h2 style="margin-top: 0;">MIT License</h2>
+      <p style="margin-bottom: 0;">Copyright © 2024 Abhirup Nandi</p>
+    </div>
+
+    <div class="license-box">
+      <h3>License Text</h3>
+      <div class="license-text">
+MIT License
+
+Copyright (c) 2024 Abhirup Nandi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+      </div>
+    </div>
+
+    <div class="license-box">
+      <h3>What This Means For You</h3>
+      <div class="key-points">
+        <div class="point-card">
+          <div class="point-title">
+            <span class="point-icon">✓</span>
+            Commercial Use
+          </div>
+          <div class="point-desc">
+            You can use CareEase for commercial purposes without any restrictions. Build products, services, or businesses using this software.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-title">
+            <span class="point-icon">✎</span>
+            Modification
+          </div>
+          <div class="point-desc">
+            You're free to modify the source code to fit your needs. Customize features, add new functionality, or adapt it for specific use cases.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-title">
+            <span class="point-icon">↗</span>
+            Distribution
+          </div>
+          <div class="point-desc">
+            You can distribute the original or modified versions of CareEase. Share it with others, include it in your projects, or publish your modifications.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-title">
+            <span class="point-icon">◈</span>
+            Private Use
+          </div>
+          <div class="point-desc">
+            Use CareEase privately for personal, family, or internal organizational purposes without any obligations to share your changes.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="license-box">
+      <h3>Your Responsibilities</h3>
+      <div class="key-points">
+        <div class="point-card">
+          <div class="point-title">
+            <span class="point-icon">©</span>
+            Include Copyright Notice
+          </div>
+          <div class="point-desc">
+            When distributing CareEase, you must include the original MIT license and copyright notice (© 2024 Abhirup Nandi) in all copies or substantial portions.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-title">
+            <span class="point-icon">⚠</span>
+            No Warranty
+          </div>
+          <div class="point-desc">
+            CareEase is provided "as is" without warranty of any kind. The author is not liable for any issues, damages, or problems that may arise from using the software.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="license-box" style="text-align: center;">
+      <h3>Questions About Licensing?</h3>
+      <p class="muted" style="margin-bottom: 1rem;">
+        If you have questions about how you can use CareEase or need clarification about the license terms, feel free to reach out.
+      </p>
+      <a href="contact.html" class="btn btn-primary">Contact Us</a>
+    </div>
+  </main>
+
+    <!-- ====== Footer ====== -->
+    <footer class="site-footer" style="background: linear-gradient(135deg, var(--primaryA), var(--primaryB));">
+    <div class="container foot-grid">
+        <div class="footer-left" style="font-size:20px;color:black;">
+        &copy; <b>CareEase</b> — Built by <span class="highlight">Tech Titans</span>
+        </div>
+
+        <div class="foot-links" style="font-size:18px;color:black">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="license.html">License</a>
+        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fa-brands fa-github" style="font-size:25px"></i>
+        </a>
+        <a href="#" id="backToTop" aria-label="Back to top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </a>
+        </div>
+    </div>
+    </footer>
+
+  <script>
+    // ================== Theme toggle (persist in localStorage) ==================
+    const themeToggle = document.getElementById('themeToggle');
+    const applyTheme = t => {
+      if (t === 'light') document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
+      else document.documentElement.style.filter = '';
+      localStorage.setItem('ce_theme', t);
+      themeToggle?.setAttribute('aria-pressed', String(t === 'light'));
+    };
+    const saved = localStorage.getItem('ce_theme');
+    if (saved) applyTheme(saved);
+
+    themeToggle?.addEventListener('click', () => {
+      const cur = localStorage.getItem('ce_theme') || 'dark';
+      applyTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+
+    // ================== Mobile menu toggle ==================
+    const menuBtn = document.getElementById('menuBtn');
+    const mobnav = document.getElementById('mobnav');
+    menuBtn?.addEventListener('click', () => {
+      const isHidden = mobnav.hasAttribute('hidden');
+      if (isHidden) {
+        mobnav.removeAttribute('hidden');
+        menuBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        mobnav.setAttribute('hidden', '');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // ================== Back to top ==================
+    document.getElementById('backToTop')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
