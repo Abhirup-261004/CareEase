@@ -46,6 +46,19 @@
       font-weight: 500;
     }
 
+    
+    /* Mic listening animation */
+    #voiceAdd.listening {
+      animation: pulse 1s infinite;
+      box-shadow: 0 0 15px rgba(110,231,183,0.5), 0 0 30px rgba(192,132,252,0.5);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+
     /* ====== Heading Typewriter + Gradient Glow ====== */
     h1.display, h2 {
       display: inline-block;
@@ -313,6 +326,69 @@
     window.addEventListener('DOMContentLoaded', () => {
       // Initialize Step 2 persistence feature
       ReminderStorage.init('reminderForm', 'list');
+
+       // ====== Voice Add Reminder ======
+      const voiceBtn = document.getElementById('voiceAdd');
+      const form = document.getElementById('reminderForm');
+      const toast = document.getElementById('toast');
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) return; // unsupported
+
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      }
+
+      function speak(msg) {
+        if (!window.speechSynthesis) return;
+        const u = new SpeechSynthesisUtterance(msg);
+        window.speechSynthesis.speak(u);
+      }
+
+      voiceBtn.addEventListener('click', () => {
+        recognition.start();
+        voiceBtn.classList.add('listening');
+        showToast("🎤 Listening...");
+      });
+
+      recognition.addEventListener('result', e => {
+        const transcript = e.results[0][0].transcript.toLowerCase().trim();
+        voiceBtn.classList.remove('listening');
+
+        // Parse "remind me to <title> at <HH:MM>"
+        const match = transcript.match(/remind me to (.+?) at (\d{1,2}(:\d{2})?\s?(am|pm)?)/);
+        if (match) {
+          let [_, title, time] = match;
+          if (time.match(/am|pm/)) {
+            const t = new Date(`01/01/2000 ${time}`);
+            time = t.getHours().toString().padStart(2,'0') + ':' + t.getMinutes().toString().padStart(2,'0');
+          }
+          form.title.value = title.charAt(0).toUpperCase() + title.slice(1);
+          form.time.value = time;
+          form.type.value = 'other';
+          form.repeat.value = 'once';
+          form.notes.value = '';
+          form.enabled.checked = true;
+
+          // Submit form programmatically
+          form.dispatchEvent(new Event('submit', { bubbles:true, cancelable:true }));
+          showToast(`✅ Reminder added: "${title}" at ${time}`);
+          speak(`Reminder added: ${title} at ${time}`);
+        } else {
+          showToast("❌ Command not recognized. Say: 'Remind me to ... at ...'");
+          speak("Command not recognized");
+        }
+      });
+
+      recognition.addEventListener('end', () => voiceBtn.classList.remove('listening'));
+    
     });
   </script>
 </body>
