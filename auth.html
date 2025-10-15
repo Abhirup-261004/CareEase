@@ -9,6 +9,289 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/logo.png" />
+  
+  <style>
+    /* -------------------- Reset & Base -------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body, html {
+  height: 100%;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* -------------------- Light Theme (Default) -------------------- */
+:root {
+  --bg-color: #f0f2f5;
+  --card-bg: #fff;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --accent: #6c5ce7;
+  --input-bg: #fff;
+  --input-border: #ccc;
+  --btn-bg: #6c5ce7;
+  --btn-color: #fff;
+  --footer-color: #999;
+  --sitebar-bg: rgba(255,255,255,0.9);
+  --link-color: #555;
+}
+
+/* -------------------- Dark Theme -------------------- */
+body[data-theme="dark"] {
+  --bg-color: #121212;
+  --card-bg: #1f1f1f;
+  --text-primary: #eee;
+  --text-secondary: #bbb;
+  --accent: #8e7dff;
+  --input-bg: #2b2b2b;
+  --input-border: #444;
+  --btn-bg: #8e7dff;
+  --btn-color: #fff;
+  --footer-color: #888;
+  --sitebar-bg: rgba(30,30,30,0.9);
+  --link-color: #ccc;
+}
+
+/* -------------------- Background -------------------- */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent), #00b894);
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+
+/* -------------------- Header / Sitebar -------------------- */
+.sitebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--sitebar-bg);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.sitebar .brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.2rem;
+  gap: 0.5rem;
+}
+
+.sitebar .link {
+  text-decoration: none;
+  color: var(--link-color);
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.sitebar .link:hover {
+  color: var(--accent);
+}
+
+/* -------------------- Card Container -------------------- */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  min-height: calc(100vh - 70px);
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.card h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.card .sub {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* -------------------- Tabs -------------------- */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #eee;
+  transition: border-color 0.3s ease;
+}
+
+body[data-theme="dark"] .tabs {
+  border-color: #333;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #888;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  color: var(--accent);
+  border-bottom: 3px solid var(--accent);
+}
+
+/* -------------------- Forms -------------------- */
+.pane {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+input {
+  margin-top: 0.3rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(108,92,231,0.2);
+  outline: none;
+}
+
+/* Password wrapper */
+.password-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+}
+
+.btn-primary:hover {
+  background: #5a4bd8;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(108,92,231,0.3);
+}
+
+/* Footnote */
+.footnote {
+  font-size: 0.8rem;
+  color: var(--footer-color);
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.footnote a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footnote a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------- Toast -------------------- */
+#toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(20px);
+  z-index: 999;
+}
+
+#toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 480px) {
+  .card {
+    padding: 2rem 1rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tab {
+    border-bottom: none;
+    text-align: center;
+  }
+}
+
+  </style>
 </head>
 <body>
   <div class="bg"></div>
