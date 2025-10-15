@@ -14,20 +14,40 @@ if (menuBtn && mobnav) {
   });
 }
 
-// ================== Theme toggle (persist in localStorage) ==================
-const themeToggle = document.getElementById('themeToggle');
-const applyTheme = t => {
-  if (t === 'light') document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
-  else document.documentElement.style.filter = '';
-  localStorage.setItem('ce_theme', t);
-  themeToggle?.setAttribute('aria-pressed', String(t === 'light'));
-};
-const saved = localStorage.getItem('ce_theme');
-if (saved) applyTheme(saved);
+// ================== Dark Mode Toggle ==================
+// This new section replaces the old theme toggle.
+// It assumes your toggle button has id="theme-toggle-button".
+const themeToggleButton = document.getElementById('theme-toggle-button');
+const body = document.body;
 
-themeToggle?.addEventListener('click', () => {
-  const cur = localStorage.getItem('ce_theme') || 'dark';
-  applyTheme(cur === 'dark' ? 'light' : 'dark');
+// Function to apply the correct theme class and button icon
+const applyUserTheme = (theme) => {
+  if (theme === 'dark') {
+    body.classList.add('dark-mode');
+    if (themeToggleButton) themeToggleButton.textContent = '☀️'; // Sun icon
+  } else {
+    body.classList.remove('dark-mode');
+    if (themeToggleButton) themeToggleButton.textContent = '🌙'; // Moon icon
+  }
+};
+
+// On page load, check localStorage for a saved theme
+const savedUserTheme = localStorage.getItem('theme') || 'light'; // Default to light mode
+applyUserTheme(savedUserTheme);
+
+// Add click listener to the toggle button
+themeToggleButton?.addEventListener('click', () => {
+  const isDarkMode = body.classList.contains('dark-mode');
+  
+  if (isDarkMode) {
+    // If it's dark, switch to light mode
+    applyUserTheme('light');
+    localStorage.setItem('theme', 'light');
+  } else {
+    // If it's light, switch to dark mode
+    applyUserTheme('dark');
+    localStorage.setItem('theme', 'dark');
+  }
 });
 
 

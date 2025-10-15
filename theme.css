@@ -1,0 +1,66 @@
+/* ===============================
+   CareEase Unified Theme
+   =============================== */
+
+:root {
+  /* Light Mode (Default) */
+  --primary: #2D9CDB;      /* Trust Blue */
+  --accent: #27AE60;       /* Wellness Green */
+  --bg: #F7FAFC;           /* Clean Light Background */
+  --text: #1A202C;         /* Dark Text for Readability */
+  --card-bg: #FFFFFF;
+  --border-color: #E2E8F0;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add this new ruleset for Dark Mode */
+body.dark-mode {
+  --bg: #1A202C;           /* Dark Background */
+  --text: #F7FAFC;         /* Light Text */
+  --card-bg: #2D3748;      /* Darker Card Background */
+  --border-color: #4A5568;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* Darker shadow */
+}
+
+/* Generic styling that all pages can use */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Poppins", sans-serif;
+  /* Add a transition for smooth color changes */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button, .btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  box-shadow: var(--shadow);
+  transition: background-color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Add this CSS for the floating theme toggle button */
+#theme-toggle-button {
+  position: fixed; /* This makes it stay in place */
+  bottom: 20px;
+  right: 20px;
+  z-index: 999; /* Ensures it stays on top of other content */
+  
+  /* Styling for the button */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Makes it a circle */
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
