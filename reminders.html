@@ -108,6 +108,59 @@
       padding-top: 3rem;
       padding-bottom: 3rem;
     }
+#voiceReminder {
+  position: relative;
+  background: linear-gradient(90deg, #fcd34d, #f97316);
+  color: #fff;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(252,211,77,0.4);
+}
+
+#voiceReminder:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(252,211,77,0.6), 0 0 30px rgba(249,115,22,0.6);
+}
+
+#voiceReminder.listening {
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 15px rgba(252,211,77,0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(252,211,77,0.7); }
+  100% { transform: scale(1); box-shadow: 0 0 15px rgba(252,211,77,0.4); }
+}
+
+.voice-status {
+  display: none;
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0,0,0,0.7);
+  padding: 3px 8px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#voiceReminder.listening .voice-status {
+  display: block;
+  opacity: 1;
+}
+
+
   </style>
 </head>
 <body>
@@ -248,6 +301,15 @@
           <button class="btn btn-primary" type="submit">Save reminder</button>
           <button class="btn btn-outline" type="reset" id="formReset">Clear</button>
         </div>
+
+       <div class="reminder-controls">
+  <button id="voiceReminder" title="Add reminder by voice">
+    🎤 Voice Add
+    <span id="voiceStatus" class="voice-status">Listening…</span>
+  </button>
+</div>
+
+
       </form>
     </div>
   </section>
@@ -309,11 +371,101 @@
   <script src="js/reminders.js"></script>
   <script src="js/navbar-integration.js"></script>
   <script src="js/reminders-localstorage.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      // Initialize Step 2 persistence feature
-      ReminderStorage.init('reminderForm', 'list');
+ <script>
+window.addEventListener('DOMContentLoaded', () => {
+  // Initialize Step 2 persistence feature
+  ReminderStorage.init('reminderForm', 'list');
+
+  const micBtn = document.getElementById('voiceReminder');
+  const statusText = document.getElementById('voiceStatus');
+  const form = document.getElementById('reminderForm');
+  const titleInput = form.querySelector('input[name="title"]');
+  const timeInput = form.querySelector('input[name="time"]');
+  const typeSelect = form.querySelector('select[name="type"]');
+  const repeatSelect = form.querySelector('select[name="repeat"]');
+
+  function parseTimeTo24Hour(timeStr) {
+    const regex = /(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i;
+    const match = timeStr.match(regex);
+    if (!match) return null;
+
+    let hour = parseInt(match[1], 10);
+    let minute = parseInt(match[2] || '0', 10);
+    const meridiem = match[3]?.toLowerCase();
+
+    if (meridiem === 'pm' && hour < 12) hour += 12;
+    if (meridiem === 'am' && hour === 12) hour = 0;
+
+    const hh = hour.toString().padStart(2, '0');
+    const mm = minute.toString().padStart(2, '0');
+    return `${hh}:${mm}`;
+  }
+
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    micBtn.addEventListener('click', () => {
+      micBtn.classList.add('listening');
+      statusText.textContent = 'Listening…';
+      recognition.start();
     });
-  </script>
+
+    recognition.addEventListener('result', (event) => {
+      const speech = event.results[0][0].transcript.toLowerCase();
+      statusText.textContent = 'Processing…';
+
+      setTimeout(() => {
+        const remindRegex = /remind me to (.+) at (\d{1,2}(:\d{2})?\s?(am|pm)?)/i;
+        const match = speech.match(remindRegex);
+
+        if (match) {
+          const task = match[1];
+          let time = parseTimeTo24Hour(match[2]);
+
+          if (time) {
+            titleInput.value = task;
+            timeInput.value = time;
+            typeSelect.value = 'other';
+            repeatSelect.value = 'once';
+            form.scrollIntoView({ behavior: 'smooth' });
+
+            statusText.textContent = '✅ Reminder added!';
+            setTimeout(() => statusText.textContent = '', 2000);
+          } else {
+            statusText.textContent = '❌ Could not parse time';
+            setTimeout(() => statusText.textContent = '', 2000);
+          }
+        } else if (speech.includes('show all reminders')) {
+          document.getElementById('list').scrollIntoView({ behavior: 'smooth' });
+          statusText.textContent = '📄 Showing reminders…';
+          setTimeout(() => statusText.textContent = '', 2000);
+        } else if (speech.includes('delete')) {
+          statusText.textContent = '⚠️ Delete command recognized';
+          setTimeout(() => statusText.textContent = '', 2000);
+        } else {
+          statusText.textContent = '❌ Could not understand';
+          setTimeout(() => statusText.textContent = '', 2000);
+        }
+
+        micBtn.classList.remove('listening');
+      }, 500);
+    });
+
+    recognition.addEventListener('end', () => {
+      micBtn.classList.remove('listening');
+    });
+
+  } else {
+    micBtn.disabled = true;
+    statusText.textContent = "Voice not supported";
+    micBtn.title = "Voice recognition not supported in this browser";
+  }
+});
+</script>
+
 </body>
 </html>
