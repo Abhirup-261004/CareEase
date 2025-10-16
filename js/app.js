@@ -319,3 +319,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".section, [data-reveal]").forEach(el => observer.observe(el));
 })});
+
+// ================== FAQ Section ==================
+document.addEventListener("DOMContentLoaded", () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    item.addEventListener('click', function () {
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.removeAttribute('open');
+        }
+      });
+    });
+  });
+});

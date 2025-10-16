@@ -698,7 +698,9 @@ blockquote {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-top: 12px;
+  align-items: start;
 }
+
 .faq-item {
   background: var(--card);
   border-radius: 14px;

@@ -108,6 +108,59 @@
       padding-top: 3rem;
       padding-bottom: 3rem;
     }
+/* ====== Reminder Form Fields ====== */
+#reminderForm label {
+  display: flex;
+  flex-direction: column; /* Stack label text on top of input/select */
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--text, #fff);
+  width: 100%; /* make all form fields full width */
+}
+
+#reminderForm label span.label {
+  text-align: left; /* left-align label text */
+  font-size: 0.95rem;
+}
+
+#reminderForm select,
+#reminderForm input,
+#reminderForm textarea {
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text, #fff);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  appearance: none; /* remove default arrow for better styling */
+}
+
+#reminderForm select:focus,
+#reminderForm input:focus,
+#reminderForm textarea:focus {
+  outline: none;
+  border-color: rgba(192,132,252,0.5);
+  box-shadow: 0 0 8px rgba(192,132,252,0.3);
+}
+
+/* Optional: gradient glow like buttons for select */
+#reminderForm select {
+  background: linear-gradient(90deg, #6ee7b7, #c084fc, #60a5fa);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(110,231,183,0.25), 0 0 20px rgba(192,132,252,0.25);
+  transition: all 0.3s ease;
+}
+
+#reminderForm select:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 15px rgba(110,231,183,0.4), 0 0 30px rgba(192,132,252,0.4);
+}
+
+    
   </style>
 </head>
 <body>
@@ -244,6 +297,17 @@
           <input type="checkbox" name="enabled" checked />
           <span>Enable this reminder</span>
         </label>
+        <label>
+  <span class="label">Snooze (minutes)</span>
+  <select name="snooze">
+    <option value="0">None</option>
+    <option value="5">5 min</option>
+    <option value="10">10 min</option>
+    <option value="15">15 min</option>
+    <option value="30">30 min</option>
+  </select>
+</label>
+
         <div class="btns full">
           <button class="btn btn-primary" type="submit">Save reminder</button>
           <button class="btn btn-outline" type="reset" id="formReset">Clear</button>
@@ -313,7 +377,194 @@
     window.addEventListener('DOMContentLoaded', () => {
       // Initialize Step 2 persistence feature
       ReminderStorage.init('reminderForm', 'list');
+    const ReminderStorage = (() => {
+  let reminders = [];
+  let reminderForm, reminderList;
+
+  const init = (formId, listId) => {
+    reminderForm = document.getElementById(formId);
+    reminderList = document.getElementById(listId);
+
+    loadReminders();
+    renderReminders();
+
+    reminderForm.addEventListener('submit', handleFormSubmit);
+    document.getElementById('clear-reminders').addEventListener('click', clearAll);
+    document.getElementById('export-reminders').addEventListener('click', exportReminders);
+    document.getElementById('import-reminders').addEventListener('change', importReminders);
+
+    setInterval(checkReminders, 10000); // check every 10 seconds
+  };
+
+  const loadReminders = () => {
+    const stored = localStorage.getItem('reminders');
+    reminders = stored ? JSON.parse(stored) : [];
+  };
+
+  const saveReminders = () => {
+    localStorage.setItem('reminders', JSON.stringify(reminders));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(reminderForm);
+    const id = formData.get('id') || Date.now().toString();
+    const reminder = {
+      id,
+      type: formData.get('type'),
+      title: formData.get('title'),
+      time: formData.get('time'),
+      repeat: formData.get('repeat'),
+      snooze: Number(formData.get('snooze')) || 0,
+      notes: formData.get('notes'),
+      enabled: formData.get('enabled') === 'on',
+      snoozedUntil: null
+    };
+
+    const index = reminders.findIndex(r => r.id === id);
+    if (index >= 0) reminders[index] = reminder;
+    else reminders.push(reminder);
+
+    saveReminders();
+    renderReminders();
+    reminderForm.reset();
+  };
+
+  const renderReminders = () => {
+    reminderList.innerHTML = '';
+    if (reminders.length === 0) {
+      document.getElementById('emptyState').style.display = 'block';
+      return;
+    } else {
+      document.getElementById('emptyState').style.display = 'none';
+    }
+
+    reminders.forEach(rem => {
+      if (!rem.enabled) return;
+
+      const card = document.createElement('div');
+      card.className = 'app-card';
+      card.innerHTML = `
+        <span class="dot"></span>
+        <div>
+          <b>${rem.title}</b>
+          <div class="muted">${rem.time} • Repeat: ${rem.repeat}</div>
+          <div class="muted" style="font-size:0.8em;">Snoozed: ${rem.snoozedUntil ? new Date(rem.snoozedUntil).toLocaleTimeString() : '-'}</div>
+          <button class="btn btn-outline" onclick="ReminderStorage.snooze('${rem.id}')">Snooze</button>
+          <button class="btn btn-outline" onclick="ReminderStorage.complete('${rem.id}')">Done</button>
+        </div>
+      `;
+      reminderList.appendChild(card);
     });
+  };
+
+  const checkReminders = () => {
+    const now = new Date();
+    reminders.forEach(rem => {
+      if (!rem.enabled) return;
+
+      let reminderTime = new Date();
+      const [hh, mm] = rem.time.split(':');
+      reminderTime.setHours(hh, mm, 0, 0);
+
+      if (rem.snoozedUntil) reminderTime = new Date(rem.snoozedUntil);
+
+      if (now >= reminderTime) {
+        alert(`Reminder: ${rem.title}`);
+        if (!rem.snoozedUntil) handleRepeat(rem);
+        rem.snoozedUntil = null;
+        saveReminders();
+        renderReminders();
+      }
+    });
+  };
+
+  const handleRepeat = (rem) => {
+    if (rem.repeat === 'daily') addDays(rem, 1);
+    else if (rem.repeat === 'weekly') addDays(rem, 7);
+  };
+
+  const addDays = (rem, days) => {
+    const [hh, mm] = rem.time.split(':');
+    const date = new Date();
+    date.setHours(hh, mm, 0, 0);
+    date.setDate(date.getDate() + days);
+    rem.time = `${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}`;
+    saveReminders();
+  };
+
+  const snooze = (id) => {
+    const rem = reminders.find(r => r.id === id);
+    if (!rem || rem.snooze <= 0) return;
+    const now = new Date();
+    now.setMinutes(now.getMinutes() + rem.snooze);
+    rem.snoozedUntil = now.toISOString();
+    saveReminders();
+    renderReminders();
+  };
+
+  const complete = (id) => {
+    const rem = reminders.find(r => r.id === id);
+    if (!rem) return;
+
+    if (!document.getElementById('missedList')) return;
+    const missedList = document.getElementById('missedList');
+    const card = document.createElement('div');
+    card.className = 'app-card dashed';
+    card.innerHTML = `<span class="dot"></span><div><b>${rem.title}</b><div class="muted">Completed</div></div>`;
+    missedList.prepend(card);
+
+    // Remove from active
+    reminders = reminders.filter(r => r.id !== id);
+    saveReminders();
+    renderReminders();
+  };
+
+  const clearAll = () => {
+    reminders = [];
+    saveReminders();
+    renderReminders();
+    document.getElementById('missedList').innerHTML = '';
+  };
+
+  const exportReminders = () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reminders));
+    const dlAnchor = document.createElement('a');
+    dlAnchor.setAttribute("href", dataStr);
+    dlAnchor.setAttribute("download", "reminders.json");
+    dlAnchor.click();
+  };
+
+  const importReminders = (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const imported = JSON.parse(e.target.result);
+        reminders = imported;
+        saveReminders();
+        renderReminders();
+      } catch(err) {
+        alert("Invalid JSON file!");
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  return { init, snooze, complete };
+})();
+});
   </script>
+  <!-- Start of LiveChat (www.livechat.com) code -->
+<script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 19340449;
+    window.__lc.integration_name = "manual_onboarding";
+    window.__lc.product_name = "livechat";
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+</script>
+<noscript><a href="https://www.livechat.com/chat-with/19340449/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
 </body>
 </html>
