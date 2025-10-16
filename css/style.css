@@ -698,7 +698,9 @@ blockquote {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-top: 12px;
+  align-items: start;
 }
+
 .faq-item {
   background: var(--card);
   border-radius: 14px;
@@ -849,11 +851,13 @@ footer {
   display: block;
 }
 .brand-logo {
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 60px;
   display: inline-block;
   object-fit: contain;
+  
 }
+
 
 /* force dropdown options to be black for visibility in all themes */
 .form select option,
@@ -1059,4 +1063,106 @@ html {
   cursor: pointer;
   padding: 3px 8px;
 }
+}
+
+
+/* ===== Typewriter Effect (for Contact Heading) ===== */
+h1.display[data-typewriter] {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid var(--primaryA);
+  white-space: nowrap;
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 48px);
+  background: linear-gradient(90deg, #6ee7b7, #c084fc, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(110, 231, 183, 0.25),
+               0 0 20px rgba(192, 132, 252, 0.25);
+  animation: heroGlow 3s ease-in-out infinite alternate,
+             typing 1.8s steps(30, end) forwards;
+}
+
+h1.display[data-typewriter].finished {
+  border-right: none;
+}
+
+
+/* ===== Keyframes ===== */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes heroGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(110, 231, 183, 0.25),
+                 0 0 20px rgba(192, 132, 252, 0.25);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(110, 231, 183, 0.5),
+                 0 0 40px rgba(192, 132, 252, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(110, 231, 183, 0.25),
+                 0 0 20px rgba(192, 132, 252, 0.25);
+  }
+}
+
+/* ===== Fade & Slide Entry for Contact Section ===== */
+.section .container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible .container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Card Hover Effects ===== */
+.features .card {
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.features .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(192, 132, 252, 0.3),
+              0 0 10px rgba(110, 231, 183, 0.3);
+}
+
+/* ===== Gradient Accent for Eyebrow or Important Text ===== */
+.eyebrow {
+  background: linear-gradient(90deg, #6ee7b7, #60a5fa, #c084fc);
+  background-clip: text;             /* ✅ Standard version */
+  -webkit-background-clip: text;     /* ✅ WebKit fallback */
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+/* ===== Smooth Scroll Reveal Animation ===== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-reveal].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Optional: Form Glow Focus ===== */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #c084fc;
+  box-shadow: 0 0 8px rgba(192, 132, 252, 0.4);
+  transition: box-shadow 0.3s ease;
 }

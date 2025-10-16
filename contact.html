@@ -9,13 +9,15 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/contact-animations.css" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
 </head>
+
 <body>
 <header class="topbar">
   <div class="container row">
     <a class="brand" href="index.html" aria-label="CareEase home">
-      <img src="assets/logo.svg" alt="CareEase Logo" class="brand-logo" />
+      <img src="assets/logo2.png" alt="CareEase Logo" class="brand-logo" />
       <span>CareEase</span>
     </a>
     <nav class="primary" aria-label="Primary">
@@ -30,6 +32,7 @@
     </nav>
     <button class="hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobnav">☰</button>
   </div>
+
   <div id="mobnav" hidden class="container" style="padding-top:0; padding-bottom:16px">
     <div class="card mobmenu">
       <a href="index.html#features">Features</a>
@@ -44,77 +47,84 @@
   </div>
 </header>
 
-
-  <main>
-    <section class="section">
-      <div class="container">
+<main>
+  <section class="section fade-in">
+    <div class="container">
+      <header class="section-header" data-typewriter>
         <span class="eyebrow">We'd love to hear from you</span>
         <h1 class="display" style="margin-top:8px">Contact CareEase</h1>
         <p class="lead">Questions, feedback, or partnership ideas? Send us a message and we’ll get back within 1–2 business days.</p>
+      </header>
 
-        <div class="card" style="margin-top:16px">
-          <form id="contactForm" class="form" novalidate>
-            <label class="full">
-              <span class="label">Full name</span>
-              <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
-            </label>
-            <label>
-              <span class="label">Email</span>
-              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
-            </label>
-            <label>
-              <span class="label">Phone (optional)</span>
-              <input type="tel" name="phone" placeholder="+91 98765 43210" autocomplete="tel" />
-            </label>
-            <label>
-              <span class="label">Topic</span>
-              <select name="topic" required>
-                <option value="" selected disabled>Select a topic</option>
-                <option>Support</option>
-                <option>Feedback</option>
-                <option>Partnership</option>
-                <option>Other</option>
-              </select>
-            </label>
-            <label class="full">
-              <span class="label">Message</span>
-              <textarea name="message" placeholder="How can we help?" required></textarea>
-            </label>
-            <label class="full consent">
-              <input type="checkbox" name="consent" required />
-              <span class="muted">I agree that CareEase may contact me about my request and related updates.</span>
-            </label>
-            <div class="form-row full" style="margin-top:4px">
-              <button class="btn btn-primary" type="submit">Send message</button>
-              <button class="btn btn-ghost" type="reset">Clear</button>
-              <span id="formStatus" class="muted" aria-live="polite"></span>
-            </div>
-          </form>
-        </div>
-
-        <div class="features" style="margin-top:18px">
-          <article class="card">
-            <h3>Support hours</h3>
-            <p class="muted">Mon–Fri • 9:00–18:00 IST</p>
-          </article>
-          <article class="card">
-            <h3>Response time</h3>
-            <p class="muted">Usually within 24–48 hours</p>
-          </article>
-          <article class="card">
-            <h3>Privacy</h3>
-            <p class="muted">We only use your info to respond to your request.</p>
-          </article>
-        </div>
+      <div class="card fade-in" style="margin-top:16px">
+        <form id="contactForm" class="form" novalidate>
+          <label class="full">
+            <span class="label">Full name</span>
+            <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+          </label>
+          <label>
+            <span class="label">Email</span>
+            <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+          </label>
+          <label>
+            <span class="label">Phone (optional)</span>
+            <input type="tel" name="phone" placeholder="+91 98765 43210" autocomplete="tel" />
+          </label>
+          <label>
+            <span class="label">Topic</span>
+            <select name="topic" required>
+              <option value="" selected disabled>Select a topic</option>
+              <option>Support</option>
+              <option>Feedback</option>
+              <option>Partnership</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="full">
+            <span class="label">Message</span>
+            <textarea name="message" placeholder="How can we help?" required></textarea>
+          </label>
+          <label class="full consent">
+            <input type="checkbox" name="consent" required />
+            <span class="muted">I agree that CareEase may contact me about my request and related updates.</span>
+          </label>
+          <div class="form-row full" style="margin-top:4px">
+            <button class="btn btn-primary glow-btn" type="submit">Send message</button>
+            <button class="btn btn-ghost" type="reset">Clear</button>
+            <span id="formStatus" class="muted" aria-live="polite"></span>
+          </div>
+        </form>
       </div>
-    </section>
-  </main>
 
-  <footer>
+      <div class="features" style="margin-top:18px">
+        <article class="card fade-in">
+          <h3>Support hours</h3>
+          <p class="muted">Mon–Fri • 9:00–18:00 IST</p>
+        </article>
+        <article class="card fade-in">
+          <h3>Response time</h3>
+          <p class="muted">Usually within 24–48 hours</p>
+        </article>
+        <article class="card fade-in">
+          <h3>Privacy</h3>
+          <p class="muted">We only use your info to respond to your request.</p>
+        </article>
+        </section>
+</main>
+  <!-- ====== Footer ====== -->
+  <footer class="site-footer" style="background: linear-gradient(135deg, var(--primaryA), var(--primaryB));">
     <div class="container foot-grid">
-      <div>© <b>CareEase</b> — Built by Tech Titans</div>
-      <div class="foot-links">
-        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener">GitHub</a>
+      <div class="footer-left" style="font-size:20px;color:black;">
+        &copy; <b>CareEase</b> — Built by <span class="highlight">Tech Titans</span>
+      </div>
+
+      <div class="foot-links" style="font-size:18px;color:black">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="license.html">License</a>
+        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github" style="font-size:25px"></i>
+        </a>
         <a href="#" id="backToTop" aria-label="Back to top">
           <i class="fa-solid fa-arrow-up"></i>
         </a>
@@ -122,10 +132,20 @@
     </div>
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite">Message sent! We'll reply soon.</div>
 
-  <script src="js/app.js"></script>
-  <script src="js/contact.js"></script>
-  <script src="js/navbar-integration.js"></script>
+<script src="js/app.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/navbar-integration.js"></script>
+<script src="js/contact-animations.js"></script>
+<!-- Start of LiveChat (www.livechat.com) code -->
+<script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 19340449;
+    window.__lc.integration_name = "manual_onboarding";
+    window.__lc.product_name = "livechat";
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+</script>
+<noscript><a href="https://www.livechat.com/chat-with/19340449/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
 </body>
 </html>

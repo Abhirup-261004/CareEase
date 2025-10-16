@@ -30,6 +30,7 @@ themeToggle?.addEventListener('click', () => {
   applyTheme(cur === 'dark' ? 'light' : 'dark');
 });
 
+
 // Mobile theme toggle
 
   const themeToggleMobile = document.getElementById('themeToggleMobile');
@@ -54,6 +55,7 @@ themeToggle?.addEventListener('click', () => {
     const newTh = currTh === 'dark' ? 'light' : 'dark';
     applyMobileTheme(newTh);
   });
+
 
 
 // ================== Back to Top Button ==================
@@ -288,10 +290,24 @@ const testiObserver = new IntersectionObserver(
 );
 
 testimonials.forEach(card => testiObserver.observe(card));
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Feature cards observer ---
+  const featureCards = document.querySelectorAll(".features .card");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
 
-featureCards.forEach((card) => observer.observe(card))
+featureCards.forEach((card) => observer.observe(card));
 
 document.addEventListener("DOMContentLoaded", () => {
+  // --- Typewriter effect ---
   const elements = document.querySelectorAll("[data-typewriter]");
 
   elements.forEach((el) => {
@@ -308,5 +324,40 @@ document.addEventListener("DOMContentLoaded", () => {
         el.classList.add("finished"); // removes cursor
       }
     }, 50); // typing speed
+  });
+});
+
+
+
+// Typewriter & Scroll Effects for Contact Page
+document.addEventListener("DOMContentLoaded", () => {
+  const title = document.querySelector("h1.display");
+  if (title) {
+    title.setAttribute("data-typewriter", "");
+    setTimeout(() => title.classList.add("finished"), 2000);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".section, [data-reveal]").forEach(el => observer.observe(el));
+})});
+
+// ================== FAQ Section ==================
+document.addEventListener("DOMContentLoaded", () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    item.addEventListener('click', function () {
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.removeAttribute('open');
+        }
+      });
+    });
   });
 });

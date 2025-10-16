@@ -15,7 +15,7 @@
   <header class="topbar">
     <div class="container row">
       <a class="brand" href="index.html" aria-label="CareEase home">
-        <img src="assets/logo.svg" alt="CareEase Logo" class="brand-logo" />
+        <img src="assets/logo2.png" alt="CareEase Logo" class="brand-logo" />
         <span>CareEase</span>
       </a>
       <nav class="primary" aria-label="Primary">
@@ -50,7 +50,7 @@
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">Insights & Updates</span>
-        <h1 class="display">CareEase Blog</h1>
+        <h2 data-typewriter>CareEase Blog</h1>
         <p class="lead">
           Product updates, calm care guides, and practical tips for families and caregivers.
         </p>
@@ -183,12 +183,21 @@
     </div>
   </section>
 
-  <!-- ====== Footer====== -->
-  <footer>
+ 
+  <!-- ====== Footer ====== -->
+  <footer class="site-footer" style="background: linear-gradient(135deg, var(--primaryA), var(--primaryB));">
     <div class="container foot-grid">
-      <div>&copy; <b>CareEase</b> — Built by Tech Titans</div>
-      <div class="foot-links">
-        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener">GitHub</a>
+      <div class="footer-left" style="font-size:20px;color:black;">
+        &copy; <b>CareEase</b> — Built by <span class="highlight">Tech Titans</span>
+      </div>
+
+      <div class="foot-links" style="font-size:18px;color:black">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="license.html">License</a>
+        <a href="https://github.com/Abhirup-261004/CareEase" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github" style="font-size:25px"></i>
+        </a>
         <a href="#" id="backToTop" aria-label="Back to top">
           <i class="fa-solid fa-arrow-up"></i>
         </a>
@@ -235,5 +244,15 @@
     })();
   </script>
   <script src="js/navbar-integration.js"></script>
+  <!-- Start of LiveChat (www.livechat.com) code -->
+<script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 19340449;
+    window.__lc.integration_name = "manual_onboarding";
+    window.__lc.product_name = "livechat";
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+</script>
+<noscript><a href="https://www.livechat.com/chat-with/19340449/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
 </body>
 </html>
