@@ -23,19 +23,50 @@ CareEase is a lightweight, front-end project for a healthcare helper app. It inc
 
 ---
 
+---
+
 ## 📁 Project Structure
 
+```plaintext
 CareEase/
-├─ assets/ # images, icons, media
-├─ css/ # shared CSS files
-├─ js/ # shared JS files
-├─ index.html # landing page
-├─ about.html # about page
-├─ contact.html # contact page
-├─ reminders.html # reminders UI
-├─ auth.html # sign in / sign up / forgot password
-├─ auth.css # styles for auth page
-└─ auth.js # logic for toggling auth views
+├── .github/
+│   ├── ISSUE_TEMPLATE/           # Templates for creating issues
+│   └── PULL_REQUEST_TEMPLATE.md # Template for PR submissions
+├── assets/                       # Images, icons, and static assets
+│   ├── ContactForm.png
+│   ├── DarkMode.png
+│   ├── Landing.png
+│   ├── Reminders.png
+│   ├── logo.png
+│   ├── logo.svg
+│   ├── logo2.png
+│   └── signup_welcome.jpg
+├── css/                          # Stylesheets
+│   ├── style.css
+│   ├── auth.css
+│   └── profile.css
+├── js/                           # JavaScript files
+│   ├── app.js
+│   ├── contact.js
+│   ├── profile.js
+│   ├── reminders-localstorage.js
+│   └── reminders.js
+├── .gitignore                     # Files/folders to ignore in Git
+├── CONTRIBUTING.md                # Guidelines for contributing
+├── LICENSE                        # Project license
+├── README.md                       # Project documentation
+├── about.html                     # About page
+├── auth.html                      # Authentication page
+├── auth.js                        # Auth-related scripts
+├── blog.html                       # Blog page
+├── contact.html                    # Contact page
+├── in.html                         # Login or sign-in page
+├── license.html                    # License page
+├── profile.html                     # Profile page
+├── reminders.html                   # Reminders page
+├── terms.html                       # Terms & Conditions page
+```
+---
 
 ## 🚀 Getting Started
 
