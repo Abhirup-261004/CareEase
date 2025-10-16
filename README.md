@@ -102,3 +102,14 @@ Contributions are welcome!
 
 ### Dark Mode
 ![Dark Mode](assets/DarkMode.png)
+
+
+## ✨ Contributors
+
+#### Thanks to all the wonderful contributors 💖
+
+<a href="https://github.com/Abhirup-261004/CareEase/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Abhirup-261004/CareEase" />
+</a>
+
+#### See full list of contributor contribution [Contribution Graph](https://github.com/Abhirup-261004/CareEase/graphs/contributors)  
