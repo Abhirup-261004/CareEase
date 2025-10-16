@@ -19,36 +19,45 @@
   function setUser(u) {
     localStorage.setItem("ce_user", JSON.stringify(u))
   }
+
   function getPrefs() {
     try {
-      return JSON.parse(localStorage.getItem("ce_prefs")) || { defaultTime: "08:00", sound: "beep" }
+      return JSON.parse(localStorage.getItem("ce_prefs")) || { defaultTime: "08:00", sound: "beep", notifications: {} }
     } catch {
-      return { defaultTime: "08:00", sound: "beep" }
+      return { defaultTime: "08:00", sound: "beep", notifications: {} }
     }
   }
   function setPrefs(p) {
     localStorage.setItem("ce_prefs", JSON.stringify(p))
   }
+
   function applyThemeLocal(theme) {
-    // mirror app.js logic
     if (theme === "light") document.documentElement.style.filter = "invert(1) hue-rotate(180deg)"
     else document.documentElement.style.filter = ""
     localStorage.setItem("ce_theme", theme)
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    const DEV_MODE = true // Set to false in production
     const form = $("#profileForm")
     if (!form) return
 
+    // Get current user
+    let user = getUser()
+
+    // Developer mode: create fake user for testing
+    if (!user && DEV_MODE) {
+      user = { name: "Test User", email: "test@example.com" }
+      localStorage.setItem("ce_user", JSON.stringify(user))
+    }
+
     // Redirect to sign in if not authenticated
-    const user = getUser()
     if (!user) {
-      // Preserve intended redirect back to profile after login if desired
       window.location.href = "auth.html#signin"
       return
     }
 
-    // Populate
+    // Populate profile fields
     const prefs = getPrefs()
     form.elements.name.value = user.name || ""
     form.elements.email.value = user.email || ""
@@ -56,13 +65,26 @@
     form.elements.defaultTime.value = prefs.defaultTime || "08:00"
     form.elements.sound.value = prefs.sound || "beep"
 
+    // Populate notification preferences
+    const notifPrefs = prefs.notifications || {}
+    $("#emailNotif")?.checked = notifPrefs.email || false
+    $("#pushNotif")?.checked = notifPrefs.push || false
+    $("#soundNotif")?.checked = notifPrefs.sound || false
+    $("#vibrateNotif")?.checked = notifPrefs.vibrate || false
+
+    // Handle profile form submission
     form.addEventListener("submit", (e) => {
       e.preventDefault()
-      // update user + prefs
       const nextUser = { ...user, name: String(form.elements.name.value || "").trim() || user.name }
       const nextPrefs = {
         defaultTime: form.elements.defaultTime.value || "08:00",
         sound: form.elements.sound.value || "beep",
+        notifications: {
+          email: $("#emailNotif")?.checked || false,
+          push: $("#pushNotif")?.checked || false,
+          sound: $("#soundNotif")?.checked || false,
+          vibrate: $("#vibrateNotif")?.checked || false
+        }
       }
       setUser(nextUser)
       setPrefs(nextPrefs)
@@ -73,20 +95,40 @@
       showToast("Saved ✓")
     })
 
+    // Reset preferences
     $("#resetPrefs")?.addEventListener("click", () => {
-      // reset preferences to defaults (does not change email)
       form.elements.theme.value = "dark"
       form.elements.defaultTime.value = "08:00"
       form.elements.sound.value = "beep"
       applyThemeLocal("dark")
-      setPrefs({ defaultTime: "08:00", sound: "beep" })
+
+      $("#emailNotif")?.checked = false
+      $("#pushNotif")?.checked = false
+      $("#soundNotif")?.checked = false
+      $("#vibrateNotif")?.checked = false
+
+      setPrefs({ defaultTime: "08:00", sound: "beep", notifications: {} })
       showToast("Preferences reset")
     })
 
+    // Sign out
     $("#signOut")?.addEventListener("click", () => {
       localStorage.removeItem("ce_user")
       showToast("Signed out")
       setTimeout(() => (window.location.href = "index.html"), 300)
+    })
+
+    // Save Notification Preferences separately
+    $("#saveNotif")?.addEventListener("click", () => {
+      const currentPrefs = getPrefs()
+      currentPrefs.notifications = {
+        email: $("#emailNotif")?.checked || false,
+        push: $("#pushNotif")?.checked || false,
+        sound: $("#soundNotif")?.checked || false,
+        vibrate: $("#vibrateNotif")?.checked || false
+      }
+      setPrefs(currentPrefs)
+      showToast("Notification preferences saved ✓")
     })
   })
 })()
