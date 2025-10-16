@@ -326,7 +326,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   faqItems.forEach(item => {
     item.addEventListener('click', function () {
-      // Close all other open FAQs
       faqItems.forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.removeAttribute('open');
