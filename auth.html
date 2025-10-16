@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CareEase — Sign in / Sign up</title>
+  <title>CareEase — Authentication</title>
   <link rel="stylesheet" href="auth.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,79 +13,82 @@
   
 </head>
 <body>
-  <div class="bg"></div>
+  <div class="auth-container">
+    
+    <!-- Left Side (Image / Illustration) -->
+    <div class="auth-left">
+      <img src="assets/signup_welcome.jpg" alt="CareEase illustration" class="auth-image">
+    </div>
 
-  <header class="sitebar">
-    <a href="index.html" class="brand">
-      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2m1 14h-2v-2H9v-2h2V8h2v4h2v2h-2z"/></svg>
-      <span>CareEase</span>
-    </a>
-    <a class="link" href="index.html">← Back to Home</a>
-  </header>
+    <!-- Right Side (Form Section) -->
+    <div class="auth-right">
+      <section class="auth-card">
+        <h1>Welcome to CareEase</h1>
+        <p class="sub">Sign in to continue or create a new account</p>
 
-  <main class="container">
-    <section class="card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-      <h1 id="authTitle">Welcome to CareEase</h1>
-      <p class="sub">Sign in to continue, or create a new account.</p>
+        <div class="tabs" role="tablist" aria-label="Authentication tabs">
+          <button class="tab active" data-tab="signin">Sign in</button>
+          <button class="tab" data-tab="signup">Sign up</button>
+        </div>
 
-      <div class="tabs" role="tablist" aria-label="Authentication tabs">
-        <button class="tab active" role="tab" aria-selected="true" data-tab="signin">Sign in</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="signup">Sign up</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="forgot">Forgot password</button>
-      </div>
+        <!-- Sign In Form -->
+        <form class="pane active" data-pane="signin">
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <div class="password-wrapper">
+              <input type="password" name="password" placeholder="••••••••" minlength="6" required />
+              <button type="button" class="password-toggle" aria-label="Show password">👁️</button>
+            </div>
+          </label>
+          <button class="btn btn-primary" type="submit">Sign in</button>
+          <p class="switch-text">Don't have an account? <a href="#" data-switch="signup">Sign up</a></p>
+          <p class="forgot"><a href="#" data-switch="forgot">Forgot password?</a></p>
+        </form>
 
-      <form class="pane" data-pane="signin" autocomplete="on">
-        <label>
-          <span class="label">Email</span>
-          <input type="email" name="email" placeholder="you@example.com" required />
-        </label>
-        <label>
-          <span class="label">Password</span>
-          <div class="password-wrapper">
-            <input type="password" name="password" placeholder="••••••••" minlength="6" required />
-            <button type="button" class="password-toggle" aria-label="Show password">👁️</button>
-          </div>
-        </label>
-        <button class="btn btn-primary" type="submit">Sign in</button>
-      </form>
+        <!-- Sign Up Form -->
+        <form class="pane" data-pane="signup" hidden>
+          <label>
+            <span>Full name</span>
+            <input type="text" name="name" placeholder="Your name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            <span>Password</span>
+            <div class="password-wrapper">
+              <input type="password" name="password" placeholder="Create a password" minlength="6" required />
+              <button type="button" class="password-toggle" aria-label="Show password">👁️</button>
+            </div>
+          </label>
+          <button class="btn btn-primary" type="submit">Create account</button>
+          <p class="switch-text">Already have an account? <a href="#" data-switch="signin">Sign in</a></p>
+        </form>
 
-      <form class="pane" data-pane="signup" hidden autocomplete="on">
-        <label>
-          <span class="label">Full name</span>
-          <input type="text" name="name" placeholder="Your name" required />
-        </label>
-        <label>
-          <span class="label">Email</span>
-          <input type="email" name="email" placeholder="you@example.com" required />
-        </label>
-        <label>
-          <span class="label">Password</span>
-          <div class="password-wrapper">
-            <input type="password" name="password" placeholder="Create a password" minlength="6" required />
-            <button type="button" class="password-toggle" aria-label="Show password">👁️</button>
-          </div>
-        </label>
-        <button class="btn btn-primary" type="submit">Create account</button>
-      </form>
+        <!-- Forgot Password Form -->
+        <form class="pane" data-pane="forgot" hidden id="forgotForm" autocomplete="on">
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Send reset link</button>
+          <p class="footnote">Remembered your password? <a href="#" data-switch="signin">Back to sign in</a></p>
+        </form>
 
-      <form class="pane" data-pane="forgot" hidden autocomplete="on">
-        <label>
-          <span class="label">Email</span>
-          <input type="email" name="email" placeholder="you@example.com" required />
-        </label>
-        <button class="btn btn-primary" type="submit">Send reset link</button>
-      </form>
-
-      <p class="footnote">
-        By continuing you agree to the <a href="#" aria-label="Terms (placeholder)">Terms</a> and
-        <a href="#" aria-label="Privacy Policy (placeholder)">Privacy Policy</a>.
-      </p>
-    </section>
-  </main>
-
-  <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+        <p class="footnote">
+          By continuing you agree to our <a href="#">Terms</a> & <a href="#">Privacy Policy</a>.
+        </p>
+      </section>
+    </div>
+  </div>
 
   <script src="auth.js" defer></script>
+
   <script src="js/navbar-integration.js"></script>
   <!-- Start of LiveChat (www.livechat.com) code -->
 <script>
@@ -97,5 +100,6 @@
 </script>
 <noscript><a href="https://www.livechat.com/chat-with/19340449/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
 <!-- End of LiveChat code -->
+
 </body>
 </html>
