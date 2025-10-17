@@ -31,6 +31,33 @@ themeToggle?.addEventListener('click', () => {
 });
 
 
+// Mobile theme toggle
+
+  const themeToggleMobile = document.getElementById('themeToggleMobile');
+
+  const applyMobileTheme = (th) => {
+    if (th === 'light') {
+      document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
+    } else {
+      document.documentElement.style.filter = '';
+    }
+
+       localStorage.setItem('ce_theme', th);
+
+       themeToggleMobile?.setAttribute('aria-pressed', String(th === 'light'));
+  };
+
+    const savedTh = localStorage.getItem('ce_theme');
+  if (savedTh) applyMobileTheme(savedTh);
+
+  themeToggleMobile?.addEventListener('click', () => {
+    const currTh = localStorage.getItem('ce_theme') || 'dark';
+    const newTh = currTh === 'dark' ? 'light' : 'dark';
+    applyMobileTheme(newTh);
+  });
+
+
+
 // ================== Back to Top Button ==================
 const backToTop = document.getElementById("backToTop");
 if (backToTop) {
