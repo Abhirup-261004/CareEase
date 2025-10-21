@@ -6,9 +6,11 @@
   <title>CareEase — Smart Care, On Time. Every Time.</title>
   <meta name="description" content="CareEase helps families and caregivers manage medicine reminders, appointments, and follow‑ups with a calm, accessible interface." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Caveat:wght@400..700&family=Creepster&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Recursive:wght@300..1000&family=Rosarivo:ital@0;1&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/darkmode.css" />
+  <link rel="stylesheet" href="css/i18n.css" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#2563eb" />
@@ -34,15 +36,19 @@
     </a>
 
     <nav class="primary" style="font-size: 18px;" aria-label="Primary">
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="#faq">FAQ</a>
-      <a href="contact.html">Contact</a>
-      <a href="about.html">About Us</a>
-      <a href="reminders.html">Reminders</a>
-      <a href="blog.html">Blog</a>
-      <button id="installApp" class="btn btn-outline" style="display: none;" aria-label="Install CareEase">📱 Install App</button>
-      <button id="themeToggle" class="btn btn-outline" aria-pressed="false" aria-label="Toggle theme">🌓 Theme</button>
+      <a href="#features" data-i18n="home.features">Features</a>
+      <a href="#how" data-i18n="home.howItWorks">How it works</a>
+      <a href="#faq" data-i18n="home.faq">FAQ</a>
+      <a href="contact.html" data-i18n="home.contact">Contact</a>
+      <a href="about.html" data-i18n="home.about">About Us</a>
+      <a href="reminders.html" data-i18n="home.reminders">Reminders</a>
+      <a href="blog.html" data-i18n="home.blog">Blog</a>
+      <select id="languageSelector" class="language-control" aria-label="Select language">
+        <option value="en">🇬🇧 English</option>
+        <option value="hi">🇮🇳 हिंदी</option>
+      </select>
+      <button id="installApp" class="btn btn-outline" style="display: none;" aria-label="Install CareEase" data-i18n="home.installApp">📱 Install App</button>
+      <button id="themeToggle" class="btn btn-outline" aria-pressed="false" aria-label="Toggle theme" data-i18n="common.theme">🌓 Theme</button>
     </nav>
 
     <button class="hamburger" id="menuBtn" style="font-size:28px" aria-expanded="false" aria-controls="mobnav">☰</button>
@@ -412,6 +418,7 @@ CareEase helps you schedule medicine & appointment reminders, catch missed alert
   
 
   <script src="js/app.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/navbar-integration.js"></script>
   <script src="js/pwa.js"></script>
 <!-- Start of LiveChat (www.livechat.com) code -->
