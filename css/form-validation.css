@@ -1,0 +1,208 @@
+/* form validation styles - shows errors and highlights invalid fields */
+
+/* invalid input fields get a red border */
+input.has-error,
+textarea.has-error,
+select.has-error {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+/* dark mode - red error styling */
+html.dark-mode input.has-error,
+html.dark-mode textarea.has-error,
+html.dark-mode select.has-error {
+  border-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* error message text appears below the field */
+.error-message {
+  display: block;
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 4px;
+  margin-left: 2px;
+  animation: slideDown 0.2s ease-out;
+}
+
+/* dark mode error text */
+html.dark-mode .error-message {
+  color: #ef4444;
+}
+
+/* smooth animation when error appears */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* success message styling - green checkmark */
+.success-message {
+  display: block;
+  color: #16a34a;
+  font-size: 13px;
+  margin-top: 4px;
+  margin-left: 2px;
+}
+
+html.dark-mode .success-message {
+  color: #22c55e;
+}
+
+/* validation summary at top of form */
+.validation-summary {
+  background-color: #fef2f2;
+  border-left: 4px solid #dc2626;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: none;
+}
+
+.validation-summary.show {
+  display: block;
+}
+
+.validation-summary h4 {
+  margin: 0 0 8px 0;
+  color: #991b1b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.validation-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.validation-summary li {
+  color: #dc2626;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.validation-summary li:before {
+  content: '• ';
+  margin-right: 6px;
+}
+
+/* dark mode validation summary */
+html.dark-mode .validation-summary {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-left-color: #ef4444;
+}
+
+html.dark-mode .validation-summary h4 {
+  color: #fecaca;
+}
+
+html.dark-mode .validation-summary li {
+  color: #ef4444;
+}
+
+/* focus state for fields - nice highlight */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+}
+
+input.has-error:focus,
+textarea.has-error:focus,
+select.has-error:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+html.dark-mode input:focus,
+html.dark-mode textarea:focus,
+html.dark-mode select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+}
+
+html.dark-mode input.has-error:focus,
+html.dark-mode textarea.has-error:focus,
+html.dark-mode select.has-error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* required field indicator */
+.label.required::after {
+  content: ' *';
+  color: #dc2626;
+  font-weight: bold;
+}
+
+html.dark-mode .label.required::after {
+  color: #ef4444;
+}
+
+/* button states during validation */
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button[type="submit"]:disabled:hover {
+  transform: none;
+}
+
+/* tooltip for inline help */
+.field-hint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+  display: block;
+}
+
+html.dark-mode .field-hint {
+  color: #9ca3af;
+}
+
+/* password strength indicator */
+.password-strength {
+  height: 4px;
+  background-color: #e5e7eb;
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+html.dark-mode .password-strength {
+  background-color: #4b5563;
+}
+
+.password-strength-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 2px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  background-color: #ef4444;
+}
+
+.password-strength-bar.weak {
+  width: 33%;
+  background-color: #ef4444;
+}
+
+.password-strength-bar.medium {
+  width: 66%;
+  background-color: #f59e0b;
+}
+
+.password-strength-bar.strong {
+  width: 100%;
+  background-color: #10b981;
+}

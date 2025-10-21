@@ -20,12 +20,11 @@ form?.addEventListener('submit', async (e) => {
   if (!consent) return statusEl.textContent = 'Please agree so we can contact you back.';
 
   // Demo success — replace with a real POST to Formspree/Netlify/Firebase
-  /* Example (Formspree):
+ 
   await fetch('https://formspree.io/f/yourid', {
     method:'POST', headers:{'Accept':'application/json'},
     body: JSON.stringify({ name, email, phone, topic, message })
   });
-  */
 
   statusEl.textContent = 'Submitting...';
   // Simulate network request delay
