@@ -6,11 +6,11 @@ const toast = document.getElementById('toast');
 form?.addEventListener('submit', async (e) => {
   e.preventDefault();
   const data = new FormData(form);
-  const name = String(data.get('name')||'').trim();
-  const email = String(data.get('email')||'').trim();
-  const phone = String(data.get('phone')||'').trim();
-  const topic = String(data.get('topic')||'').trim();
-  const message = String(data.get('message')||'').trim();
+  const name = String(data.get('name') || '').trim();
+  const email = String(data.get('email') || '').trim();
+  const phone = String(data.get('phone') || '').trim();
+  const topic = String(data.get('topic') || '').trim();
+  const message = String(data.get('message') || '').trim();
   const consent = data.get('consent');
 
   if (name.length < 2) return statusEl.textContent = 'Please enter your name.';
@@ -27,10 +27,28 @@ form?.addEventListener('submit', async (e) => {
   });
   */
 
-  statusEl.textContent = '';
-  form.reset();
-  toast?.classList.add('show');
-  setTimeout(() => toast?.classList.remove('show'), 2500);
+  statusEl.textContent = 'Submitting...';
+  // Simulate network request delay
+  setTimeout(() => {
+    const isSuccess = Math.random() > 0.5;
+    if (isSuccess) {
+      statusEl.textContent = '';
+      form.reset();
+      if (toast) {
+        toast.textContent = "Message sent successfully!";
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }
+    } else {
+      statusEl.textContent = 'Failed to send message. Please try again.';
+      if (toast) {
+        toast.textContent = "Failed to send message.";
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }
+    }
+  }, 1200);
+
 });
 
 // ====== Unified Active Nav Highlight ======
