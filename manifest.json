@@ -1,0 +1,70 @@
+{
+  "name": "CareEase - Health Reminder App",
+  "short_name": "CareEase",
+  "description": "Your personal healthcare companion for managing medications, reminders, and health profiles",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["health", "productivity"],
+  "screenshots": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "540x720",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo.png",
+      "sizes": "1080x1440",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Reminders",
+      "short_name": "Reminders",
+      "description": "Quick access to your health reminders",
+      "url": "/reminders.html",
+      "icons": [
+        {
+          "src": "assets/logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "View Profile",
+      "short_name": "Profile",
+      "description": "Access your health profile",
+      "url": "/profile.html",
+      "icons": [
+        {
+          "src": "assets/logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
