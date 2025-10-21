@@ -1,0 +1,103 @@
+<!-- cdss.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareEase CDSS Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        .card {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        input, button {
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CareEase CDSS Dashboard</h1>
+</header>
+
+<main>
+    <div class="card">
+        <h2>Patient BMI Calculator</h2>
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" placeholder="Enter weight">
+        <label for="height">Height (m):</label>
+        <input type="number" id="height" step="0.01" placeholder="Enter height">
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        <p id="bmi-result"></p>
+    </div>
+
+    <div class="card">
+        <h2>Daily Water Intake</h2>
+        <label for="weight-water">Weight (kg):</label>
+        <input type="number" id="weight-water" placeholder="Enter weight">
+        <button onclick="calculateWater()">Calculate Intake</button>
+        <p id="water-result"></p>
+    </div>
+</main>
+
+<script>
+function calculateBMI() {
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+    if (!weight || !height) {
+        alert("Please enter valid weight and height");
+        return;
+    }
+    const bmi = (weight / (height * height)).toFixed(2);
+    document.getElementById('bmi-result').innerText = `BMI: ${bmi}`;
+}
+
+function calculateWater() {
+    const weight = parseFloat(document.getElementById('weight-water').value);
+    if (!weight) {
+        alert("Please enter a valid weight");
+        return;
+    }
+    const water = (weight * 0.033).toFixed(2);
+    document.getElementById('water-result').innerText = `Daily Water Intake: ${water} L`;
+}
+</script>
+
+</body>
+</html>
+
