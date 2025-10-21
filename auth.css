@@ -22,6 +22,46 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+/* === Floating Glow Background Animation === */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  animation: floatGlow 10s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+body::before {
+  background: var(--primaryA);
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+body::after {
+  background: var(--primaryB);
+  bottom: 10%;
+  right: 15%;
+  animation-delay: 5s;
+}
+
+@keyframes floatGlow {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
 
 /* === Main Auth Container === */
 .auth-container {
