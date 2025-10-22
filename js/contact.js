@@ -1,75 +1,53 @@
-// contact form validation and submission handler
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
+// Contact form validation + demo submit
+const form = document.getElementById('contactForm');
+const statusEl = document.getElementById('formStatus');
+const toast = document.getElementById('toast');
 
-  const statusEl = document.getElementById('formStatus');
-  const toast = document.getElementById('toast');
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const name = String(data.get('name') || '').trim();
+  const email = String(data.get('email') || '').trim();
+  const phone = String(data.get('phone') || '').trim();
+  const topic = String(data.get('topic') || '').trim();
+  const message = String(data.get('message') || '').trim();
+  const consent = data.get('consent');
 
-  // set up form validation on this form
-  const validator = new FormValidator(form);
+  if (name.length < 2) return statusEl.textContent = 'Please enter your name.';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return statusEl.textContent = 'Enter a valid email address.';
+  if (!topic) return statusEl.textContent = 'Please select a topic.';
+  if (message.length < 10) return statusEl.textContent = 'Message should be at least 10 characters.';
+  if (!consent) return statusEl.textContent = 'Please agree so we can contact you back.';
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // validate all fields first
-    if (!validator.validateAll()) {
-      statusEl.textContent = 'Please fix the errors above';
-      return;
-    }
-
-    // get form data
-    const formData = new FormData(form);
-    const data = {
-      name: formData.get('name').trim(),
-      email: formData.get('email').trim(),
-      phone: formData.get('phone').trim(),
-      topic: formData.get('topic').trim(),
-      message: formData.get('message').trim(),
-      consent: formData.get('consent')
-    };
-
-    try {
-      statusEl.textContent = 'Sending...';
-
-      // replace this with your actual backend endpoint
-      // for now just simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // clear form and show success
-      statusEl.textContent = 'Message sent! We\'ll get back to you soon.';
-      statusEl.style.color = '#16a34a';
-      form.reset();
-      validator.setupListeners(); // reset validation state
-
-      // show toast notification
-      if (toast) {
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 3000);
-      }
-
-      // reset message after a few seconds
-      setTimeout(() => {
-        statusEl.textContent = '';
-        statusEl.style.color = '';
-      }, 3000);
-
-    } catch (err) {
-      statusEl.textContent = 'Failed to send. Please try again.';
-      statusEl.style.color = '#dc2626';
-      console.error('Form submission error:', err);
-    }
+  // Demo success — replace with a real POST to Formspree/Netlify/Firebase
+ 
+  await fetch('https://formspree.io/f/yourid', {
+    method:'POST', headers:{'Accept':'application/json'},
+    body: JSON.stringify({ name, email, phone, topic, message })
   });
 
-  // reset form clears validation errors too
-  form.addEventListener('reset', () => {
-    setTimeout(() => {
-      const inputs = form.querySelectorAll('input, textarea, select');
-      inputs.forEach(input => validator.clearFieldError(input));
+  statusEl.textContent = 'Submitting...';
+  // Simulate network request delay
+  setTimeout(() => {
+    const isSuccess = Math.random() > 0.5;
+    if (isSuccess) {
       statusEl.textContent = '';
-      statusEl.style.color = '';
-    }, 0);
-  });
+      form.reset();
+      if (toast) {
+        toast.textContent = "Message sent successfully!";
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }
+    } else {
+      statusEl.textContent = 'Failed to send message. Please try again.';
+      if (toast) {
+        toast.textContent = "Failed to send message.";
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }
+    }
+  }, 1200);
+
 });
 
 // ====== Unified Active Nav Highlight ======
