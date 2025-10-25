@@ -199,6 +199,7 @@ html blockquote,
 html .testi-card {
   background: var(--card);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3.5%;
 }
 
 html.dark-mode .faq-item[open],
@@ -537,6 +538,7 @@ html .form textarea {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: white;
+  font-size:20px;
 }
 
 html.dark-mode .btn-ghost,

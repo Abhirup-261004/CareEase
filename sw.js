@@ -79,9 +79,9 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(request).then((response) => {
       // if we have it cached, use it
-      if (response) {
-        return response;
-      }
+      // if (response) {
+      //   return response;
+      // }
 
       // if not cached, try the network
       return fetch(request)

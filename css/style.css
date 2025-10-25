@@ -738,7 +738,7 @@ blockquote {
   min-width: 240px;
 }
 .label {
-  font-size: 12px;
+  font-size: 20px;
   color: var(--muted);
 }
 .cta-title {
