@@ -253,33 +253,53 @@ h2 {
 
   </style>
   <!-- ====== Mission ====== -->
-  <section class="section">
-    <div class="container">
-      <h2 data-typewriter>Mission</h2>
-      <p class="muted">
-        Empower every household to manage care with confidence through gentle reminders,
-        clear design, and privacy-respecting technology.
-      </p>
-      <div class="card" style="margin-top:12px">
-        <ul class="list muted">
-          <li>Make care tasks <b>easy to remember</b> and <b>hard to miss</b>.</li>
-          <li>Keep families aligned with <b>care circles</b> and respectful sharing.</li>
-          <li>Ensure accessibility from day one: <b>large touch targets</b>, <b>assistive tech tested</b>.</li>
-        </ul>
+<section class="section">
+  <div class="container">
+    <h2 data-typewriter>Our Mission</h2>
+
+    <p class="muted">
+      Empowering every household to care with confidence — through gentle reminders, inclusive design,
+      and privacy-first technology that supports families every step of the way.
+    </p>
+
+    <div class="cards-wrapper">
+      <div class="card">
+        <p class="muted">
+          Make care tasks <b>simple to manage</b> and <b>impossible to forget</b>.
+        </p>
+      </div>
+
+      <div class="card">
+        <p class="muted">
+          Keep loved ones connected with <b>care circles</b> built on empathy and respect.
+        </p>
+      </div>
+
+      <div class="card">
+        <p class="muted">
+          Champion accessibility from day one — with <b>large touch zones</b> and
+          <b>assistive tech validation</b>.
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
+
 
   <style>
-    .section {
+   
+.section {
   padding: 5rem 2rem;
   background: #1e1e2f;
   color: #fff;
   overflow: hidden;
+  text-align: center;
 }
 
 .section h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1.5rem;
   opacity: 0;
   transform: translateY(20px);
@@ -294,35 +314,41 @@ h2 {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards 0.4s;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-/* CARD STYLING */
+/* CARD GRID */
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+/* INDIVIDUAL CARD */
 .section .card {
   background: #222238;
   padding: 1.5rem;
   border-radius: 1.2rem;
-  margin-top: 2rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards 0.6s;
+  width: 300px; /* fixed, elegant card size */
+  text-align: left;
 }
 
 .section .card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0,255,193,0.4);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 255, 193, 0.4);
 }
 
-/* LIST ITEMS */
-.section .list li {
-  margin-bottom: 0.75rem;
-  transition: all 0.3s ease;
-}
-
-.section .list li:hover b {
-  color: #00ffc1;
-  text-decoration: underline;
+.section .card p {
+  font-size: 1.1rem;
+  color: #ccc;
 }
 
 /* TYPEWRITER */
@@ -335,48 +361,80 @@ h2 {
   animation: fadeInUp 0.6s forwards 0.2s;
 }
 
-/* SCROLL ANIMATION */
+/* ANIMATION */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .section .card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+
   </style>
 
   <!-- ====== What we do ====== -->
   <section class="section">
-    <div class="container">
-      <h2 data-typewriter>What we do</h2>
-      <p class="muted">CareEase blends thoughtful design with reliable reminders.</p>
-      <div class="features" style="margin-top:14px">
-        <article class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          <h3>Gentle, persistent alerts</h3>
-          <p class="muted">A calm loop that reduces anxiety while increasing reliability.</p>
-        </article>
-        <article class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><path d="M20 7h-9"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/></svg>
-          <h3>Care circles</h3>
-          <p class="muted">Invite trusted people to receive key alerts and updates.</p>
-        </article>
-        <article class="card">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 8h10"/><path d="M7 12h6"/></svg>
-          <h3>Privacy-first</h3>
-          <p class="muted">Local-first by default. Sync is opt-in and transparent.</p>
-        </article>
-      </div>
+  <div class="container">
+    <h2 data-typewriter>What We Do</h2>
+    <p class="muted">
+      CareEase blends thoughtful design with reliable reminders — making caregiving calm, connected, and effortless.
+    </p>
+
+    <div class="features">
+      <article class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden>
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+        </svg>
+        <h3>Gentle, Persistent Alerts</h3>
+        <p class="muted">
+          Subtle reminders that reduce stress while ensuring nothing important slips through.
+        </p>
+      </article>
+
+      <article class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden>
+          <path d="M20 7h-9"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/>
+        </svg>
+        <h3>Care Circles</h3>
+        <p class="muted">
+          Build a trusted circle to share updates and reminders — because care is better together.
+        </p>
+      </article>
+
+      <article class="card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden>
+          <rect x="3" y="4" width="18" height="14" rx="2"/>
+          <path d="M7 8h10"/><path d="M7 12h6"/>
+        </svg>
+        <h3>Privacy-First</h3>
+        <p class="muted">
+          Local-first by design. Your data stays with you — sync is always optional and transparent.
+        </p>
+      </article>
     </div>
-  </section>
-  <style>
-    .section {
+  </div>
+</section>
+
+<style>
+  .section {
   padding: 5rem 2rem;
   background: #1e1e2f;
   color: #fff;
   overflow: hidden;
+  text-align: center;
 }
 
 .section h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
   opacity: 0;
   transform: translateY(20px);
@@ -391,20 +449,24 @@ h2 {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards 0.4s;
+  max-width: 720px;
+  margin: 0.5rem auto 2rem auto;
 }
 
 .features {
   display: flex;
+  justify-content: center;
+  align-items: stretch;
   gap: 1.5rem;
   flex-wrap: wrap;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .features .card {
   background: #222238;
-  padding: 1.5rem;
+  padding: 2rem 1.8rem;
   border-radius: 1.2rem;
-  flex: 1 1 250px;
+  flex: 1 1 280px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -413,7 +475,8 @@ h2 {
   transition: all 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.8s forwards;
+  animation: fadeInUp 0.8s forwards 0.6s;
+  min-height: 250px;
 }
 
 .features .card:hover {
@@ -423,6 +486,8 @@ h2 {
 
 .features .card h3 {
   color: #00ffc1;
+  font-size: 1.25rem;
+  margin-bottom: 0.3rem;
   transition: all 0.3s ease;
 }
 
@@ -432,11 +497,12 @@ h2 {
 
 .features .card p {
   color: #ccc;
+  font-size: 1.05rem;
 }
 
 .features .card .icon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   margin-bottom: 0.5rem;
   transition: transform 0.3s ease, stroke 0.3s ease;
 }
@@ -462,36 +528,55 @@ h2 {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-  </style>
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+  .features .card {
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+</style>
 
   <!-- ====== Values ====== -->
-  <section class="section">
-    <div class="container">
-      <h2 data-typewriter>Our values</h2>
-      <div class="quotes" style="margin-top:12px">
-        <blockquote>
-          <p><b>Respect</b> — People before metrics. We build for real lives and real constraints.</p>
-        </blockquote>
-        <blockquote>
-          <p><b>Clarity</b> — Every screen should be calm, readable, and predictable.</p>
-        </blockquote>
-        <blockquote>
-          <p><b>Trust</b> — Your data is yours. We explain how things work, no dark patterns.</p>
-        </blockquote>
-      </div>
-    </div>
-  </section>
+ <section class="section">
+  <div class="container">
+    <h2 data-typewriter>Our Values</h2>
+    <p class="muted">The principles that shape every choice we make — thoughtful, clear, and trustworthy.</p>
 
-  <style>
-    .section {
+    <div class="values-grid">
+      <article class="value-card">
+        <h3>Respect</h3>
+        <p>People before metrics. We build for real lives and real constraints.</p>
+      </article>
+
+      <article class="value-card">
+        <h3>Clarity</h3>
+        <p>Every screen should be calm, readable, and predictable — no confusion, just ease.</p>
+      </article>
+
+      <article class="value-card">
+        <h3>Trust</h3>
+        <p>Your data is yours. We explain how things work — no dark patterns, no surprises.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<style>
+  .section {
   padding: 5rem 2rem;
   background: #1e1e2f;
   color: #fff;
   overflow: hidden;
+  text-align: center;
 }
 
 .section h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
   opacity: 0;
   transform: translateY(20px);
@@ -499,34 +584,63 @@ h2 {
   color: #00ffc1;
 }
 
-.quotes {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.quotes blockquote {
-  background: #222238;
-  padding: 1.5rem 1.8rem;
-  border-left: 4px solid #00ffc1;
-  border-radius: 1rem;
+.section .muted {
+  color: #ccc;
+  font-size: 1.125rem;
+  line-height: 1.8;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.8s forwards;
+  animation: fadeInUp 0.8s forwards 0.4s;
+  max-width: 720px;
+  margin: 0.5rem auto 2rem auto;
+}
+
+/* GRID LAYOUT */
+.values-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+/* VALUE CARD */
+.value-card {
+  background: #222238;
+  padding: 2rem 1.8rem;
+  border-radius: 1.2rem;
+  flex: 1 1 280px;
+  min-height: 220px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
   transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.6s;
+  text-align: left;
+  border-left: 4px solid #00ffc1;
 }
 
-.quotes blockquote:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,255,193,0.3);
+.value-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0,255,193,0.4);
 }
 
-.quotes blockquote p {
-  margin: 0;
-  font-size: 1.125rem;
-  line-height: 1.7;
+.value-card h3 {
+  color: #00ffc1;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.value-card:hover h3 {
+  text-decoration: underline;
+}
+
+.value-card p {
   color: #ccc;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 /* TYPEWRITER */
@@ -539,13 +653,25 @@ h2 {
   animation: fadeInUp 0.6s forwards 0.2s;
 }
 
-/* SCROLL ANIMATION */
+/* ANIMATION */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-  </style>
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .values-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .value-card {
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+</style>
 
   <!-- ====== Team Section ====== -->
 <section class="section">
@@ -614,20 +740,21 @@ h2 {
   margin-top: 20px;
 }
 
-/* Individual Card */
+/* Existing card styles (keep your current ones) */
 .card {
-  background-color: #fff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-  text-align: center;
+  border-left: 4px solid #2563eb; /* Deep blue left border */
+  padding-left: 1rem;             /* Space between border and content */
+  border-radius: 0.5rem;          /* Smooth corners */
+  background-color: #f9fafb;      /* Subtle light background (optional) */
+  transition: border-color 0.3s ease;
+  border-left: 4px solid #00ffc1;
 }
 
+/* Optional hover effect */
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  border-left-color: #1e40af; /* Darker shade on hover */
 }
+
 
 /* Card Header */
 .card-header {
@@ -701,24 +828,39 @@ h2 {
 
   <!-- ====== Timeline / How we got here ====== -->
   <section class="section">
-    <div class="container">
-      <h2 data-typewriter>How we got here</h2>
-      <div class="steps" style="margin-top:12px">
-        <div class="step"><span class="badge">1</span>
-          <div><b>Pain points</b><br><span class="muted">Families struggling with missed meds and scattered notes.</span></div>
+  <div class="container">
+    <h2 data-typewriter>How we got here</h2>
+    <div class="steps" style="margin-top:12px">
+      <div class="step">
+        <span class="badge">1</span>
+        <div>
+          <b>Pain points</b>
+          <br>
+          <span class="muted">Families struggling with missed meds and scattered notes.</span>
         </div>
-        <div class="step"><span class="badge">2</span>
-          <div><b>Prototypes</b><br><span class="muted">Tested large text, high contrast, and tap-friendly layouts.</span></div>
+      </div>
+      <div class="step">
+        <span class="badge">2</span>
+        <div>
+          <b>Prototypes</b>
+          <br>
+          <span class="muted">Tested large text, high contrast, and tap-friendly layouts.</span>
         </div>
-        <div class="step"><span class="badge">3</span>
-          <div><b>Beta</b><br><span class="muted">Local-first reminders, missed-item re-notify, and insights.</span></div>
+      </div>
+      <div class="step">
+        <span class="badge">3</span>
+        <div>
+          <b>Beta</b>
+          <br>
+          <span class="muted">Local-first reminders, missed-item re-notify, and insights.</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <style>
-    .section {
+<style>
+.section {
   padding: 5rem 2rem;
   background: #1e1e2f;
   color: #fff;
@@ -732,31 +874,43 @@ h2 {
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards 0.2s;
   color: #00ffc1;
+  text-align: center;
 }
 
 .steps {
   display: flex;
-  flex-direction: column;
-  gap: 1.8rem;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
+  flex-wrap: wrap;
   margin-top: 2rem;
 }
 
 .step {
+  flex: 1 1 280px;
   display: flex;
   align-items: flex-start;
-  gap: 1.2rem;
+  gap: 1rem;
   background: #222238;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1.8rem;
   border-radius: 1rem;
+  transition: all 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards;
-  transition: all 0.3s ease;
+
+  /* 👇 left border effect */
+  border-left: 4px solid #00ffc1;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .step:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0 12px 30px rgba(0,255,193,0.3);
+  border-left-color: #00ffd5;
+  filter: drop-shadow(0 0 8px rgba(0,255,193,0.4));
 }
 
 .step .badge {
@@ -764,18 +918,19 @@ h2 {
   background: #00ffc1;
   color: #1e1e2f;
   font-weight: bold;
-  font-size: 1.25rem;
-  width: 2.2rem;
-  height: 2.2rem;
-  line-height: 2.2rem;
+  font-size: 1.1rem;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
   text-align: center;
   border-radius: 50%;
   flex-shrink: 0;
+  margin-top: 0.2rem;
 }
 
 .step div b {
   display: block;
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   margin-bottom: 0.3rem;
   color: #fff;
 }
@@ -783,6 +938,7 @@ h2 {
 .step div .muted {
   color: #ccc;
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 /* TYPEWRITER */
@@ -800,8 +956,8 @@ h2 {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-
-  </style>
+</style>
+ 
 
   <!-- ====== Accessibility & Privacy ====== -->
   <section class="section">
@@ -819,9 +975,8 @@ h2 {
       </div>
     </div>
   </section>
-
-  <style>
-    .section {
+<style>
+ .section {
   padding: 5rem 2rem;
   background: #1e1e2f;
   color: #fff;
@@ -835,44 +990,62 @@ h2 {
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards 0.2s;
   color: #00ffc1;
+  text-align: center;
 }
 
+/* FAQ layout - 2 cards centered */
 .faq {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
 }
 
+/* Each card */
 .faq-item {
   background: #222238;
-  padding: 1.5rem 2rem;
+  padding: 2rem;
   border-radius: 1rem;
   cursor: pointer;
+  width: 320px;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards;
   transition: all 0.3s ease;
+
+  /* Left border + glow style */
+  border-left: 5px solid #00ffc1;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .faq-item:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(0,255,193,0.3);
+  box-shadow: 0 10px 25px rgba(0,255,193,0.25);
+  border-left-color: #00ffd5;
+  filter: drop-shadow(0 0 8px rgba(0,255,193,0.4));
 }
 
+/* Card Text */
 .faq-item b {
   display: block;
-  font-size: 1.125rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
   color: #fff;
+  text-align: left;
 }
 
 .faq-item .muted {
   color: #ccc;
   font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: left;
 }
 
-/* TYPEWRITER */
+/* Typewriter Effect */
 [data-typewriter] {
   display: inline-block;
   overflow: hidden;
@@ -882,86 +1055,104 @@ h2 {
   animation: fadeInUp 0.6s forwards 0.2s;
 }
 
-/* SCROLL ANIMATION */
+/* Animation */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+</style>
 
-  </style>
-
-  <!-- ====== CTA ====== -->
-  <section class="section">
-    <div class="container cta">
-      <div>
-        <h3 class="cta-title">Help us shape the future of home care</h3>
-        <div class="muted">Join the beta to share feedback and request features.</div>
-      </div>
-      <form id="betaForm" class="card beta">
-        <label>
-          <span class="label">Email</span>
-          <input type="email" required name="email" placeholder="you@example.com" />
-        </label>
-        <button class="btn btn-primary" type="submit">Request invite</button>
-        <div id="betaStatus" class="muted" aria-live="polite"></div>
-      </form>
+ <section class="section cta-section">
+  <div class="container cta-container">
+    <div class="cta-text">
+      <h3 class="cta-title">Help us shape the future of home care</h3>
+      <div class="muted">Join the beta to share feedback and request features.</div>
     </div>
-  </section>
+    <form id="betaForm" class="card beta-form">
+      <label>
+        <span class="label">Email</span>
+        <input type="email" required name="email" placeholder="you@example.com" />
+      </label>
+      <button class="btn btn-primary" type="submit">Request invite</button>
+      <div id="betaStatus" class="muted" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
 
-  <style>
-    .section.cta {
+<style>
+.section.cta-section {
   padding: 5rem 2rem;
   background: #151526;
   color: #fff;
   overflow: hidden;
 }
 
+/* Flex container: left text smaller, right form bigger */
+.cta-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  border:1px solid rgb(76, 203, 189);
+  border-radius:5rem;
+}
+
+/* Left text */
+.cta-text {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
 .cta-title {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin-bottom: 0.5rem;
-  color: #00ffc1;
+  color: #b2f4e4;
+  text-align: center;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards 0.2s;
 }
 
-.cta .muted {
+.cta-text .muted {
   color: #ccc;
   font-size: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 0.5rem;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards 0.4s;
 }
 
-form.beta {
+/* Right form - bigger and prominent */
+.beta-form {
+  flex: 1 1 450px;
+  background: #222238;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 25px rgba(0,255,193,0.2);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  background: #222238;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(0,255,193,0.2);
+  gap: 1.25rem;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s forwards 0.6s;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-form.beta:hover {
-  transform: translateY(-6px) scale(1.01);
+.beta-form:hover {
+  transform: translateY(-6px) scale(1.02);
   box-shadow: 0 12px 30px rgba(0,255,193,0.3);
 }
 
-form.beta label {
+.beta-form label {
   display: flex;
   flex-direction: column;
   font-size: 0.95rem;
   color: #fff;
 }
 
-form.beta input {
-  padding: 0.75rem 1rem;
+.beta-form input {
+  padding: 0.85rem 1.25rem;
   margin-top: 0.3rem;
   border-radius: 0.75rem;
   border: 1px solid #444;
@@ -970,31 +1161,41 @@ form.beta input {
   transition: all 0.3s ease;
 }
 
-form.beta input:focus {
+.beta-form input:focus {
   border-color: #00ffc1;
-  box-shadow: 0 0 10px rgba(0,255,193,0.3);
+  box-shadow: 0 0 12px rgba(0,255,193,0.35);
   outline: none;
 }
 
-form.beta button.btn {
-  padding: 0.75rem 1.5rem;
+.beta-form button.btn {
+  padding: 0.85rem 1.5rem;
   border-radius: 0.75rem;
   font-weight: 600;
   transition: all 0.3s ease;
+  background: #00ffc1;
+  color: #1e1e2f;
+  border: none;
 }
 
-form.beta button.btn:hover {
+.beta-form button.btn:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 20px rgba(0,255,193,0.3);
+  box-shadow: 0 10px 25px rgba(0,255,193,0.35);
 }
 
-/* Scroll animation */
+/* Muted status message */
+.beta-form .muted {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Animation keyframes */
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Typewriter for CTA title */
+/* Typewriter for CTA title (optional) */
 [data-typewriter] {
   display: inline-block;
   overflow: hidden;
@@ -1004,7 +1205,18 @@ form.beta button.btn:hover {
   animation: fadeInUp 0.6s forwards 0.2s;
 }
 
-  </style>
+/* Responsive adjustments */
+@media screen and (max-width: 900px) {
+  .cta-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-text, .beta-form {
+    max-width: 100%;
+  }
+}
+</style>
   <!-- ====== Footer ====== -->
   <footer class="site-footer" style="background: linear-gradient(135deg, var(--primaryA), var(--primaryB));">
     <div class="container foot-grid">
