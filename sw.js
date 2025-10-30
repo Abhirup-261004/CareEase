@@ -60,7 +60,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// fetch event - serve from cache, fallback to network
+// fetch event - serve from network, fallback to cache for serving assets when offline
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
@@ -75,46 +75,38 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // strategy: cache first, fallback to network
+  // strategy: network first whilst updating the cache with latest version, fallback to cache when offline
   event.respondWith(
-    caches.match(request).then((response) => {
-      // if we have it cached, use it
-      // if (response) {
-      //   return response;
-      // }
+    fetch(request)
+      .then((response) => {
+        // cache a copy of successful responses
+        if (response && response.status === 200) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+        }
 
-      // if not cached, try the network
-      return fetch(request)
-        .then((networkResponse) => {
-          // don't cache bad responses
-          if (!networkResponse || networkResponse.status !== 200 || networkResponse.type === 'error') {
-            return networkResponse;
-          }
+        return response;
+      })
+      .catch(async () => {
+        // fallback to cache if network fails
+        const cachedResponse = await caches.match(request);
 
-          // cache successful responses for later
-          const responseToCache = networkResponse.clone();
-          caches.open(RUNTIME_CACHE).then((cache) => {
-            cache.put(request, responseToCache);
-          });
+        if (cachedResponse) {
+          return cachedResponse;
+        }
 
-          return networkResponse;
-        })
-        .catch(() => {
-          // if network fails, try to serve offline page for HTML requests
-          if (request.destination === 'document' || request.headers.get('accept').includes('text/html')) {
-            return caches.match(OFFLINE_PAGE);
-          }
+        // fallback to offline page for HTML which was not cached
+        if (request.destination === 'document' || request.headers.get('accept').includes('text/html')) {
+          return caches.match(OFFLINE_PAGE);
+        }
 
-          // for other requests, return a basic error response
-          return new Response('Offline - resource not available', {
-            status: 503,
-            statusText: 'Service Unavailable',
-            headers: new Headers({
-              'Content-Type': 'text/plain'
-            })
-          });
+        // generic fallback for other assets
+        return new Response('Offline - resource not available', {
+          status: 503,
+          statusText: 'Service Unavailable',
+          headers: new Headers({ 'Content-Type': 'text/plain' }),
         });
-    })
+      })
   );
 });
 
